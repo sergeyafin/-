@@ -111,6 +111,7 @@
             // учебнаягруппаBindingSource
             // 
             this.учебнаягруппаBindingSource.DataSource = typeof(Курсач.Учебная_группа);
+            this.учебнаягруппаBindingSource.CurrentChanged += new System.EventHandler(this.учебнаягруппаBindingSource_CurrentChanged);
             // 
             // button3
             // 
@@ -152,6 +153,7 @@
             this.button1.TabIndex = 5;
             this.button1.Text = "Добавить";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -181,7 +183,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn названиеDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn факультетDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource учебнаягруппаBindingSource;
+        public System.Windows.Forms.BindingSource учебнаягруппаBindingSource;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button4;

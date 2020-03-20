@@ -16,7 +16,7 @@ namespace Курсач
         {
             InitializeComponent();
         }
-        List<Учебная_группа> lstG = new List<Учебная_группа>();
+        public static List<Учебная_группа> lstG = new List<Учебная_группа>();
         List<string> lstGroupName = new List<string>();
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -77,6 +77,18 @@ namespace Курсач
         {
             
         }
+
+        private void учебнаягруппаBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddGroupForm formS = new AddGroupForm();
+            formS.form1 = this;
+            formS.ShowDialog();
+        }
     }
     public class Учебная_группа
     {
@@ -105,6 +117,19 @@ namespace Курсач
             Почта = почта;
             Название = название;
             Студенты = студенты;
+            ID = id_now;
+            id_now = id_now + 1;
+
+        }
+        public Учебная_группа(string название, int год, string факультет, string староста, string почта)
+        {
+
+            Год = год;
+            Староста = староста;
+            Факультет = факультет;
+            Почта = почта;
+            Название = название;
+            
             ID = id_now;
             id_now = id_now + 1;
 

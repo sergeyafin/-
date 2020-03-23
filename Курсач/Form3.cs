@@ -16,6 +16,7 @@ namespace Курсач
 
         public Form1 form1;
         bool add = false;
+
         public AddGroupForm()
         {
             InitializeComponent();
@@ -23,7 +24,7 @@ namespace Курсач
 
         private void AddGroupForm_Load(object sender, EventArgs e)
         {
-            
+            студентBindingSource.DataSource = lst;
 
         }
 
@@ -34,7 +35,42 @@ namespace Курсач
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form1.lstG.Add(new Учебная_группа(textBox5.Text, int.Parse(textBox1.Text), comboBox1.Text, textBox2.Text, textBox4.Text,lst));
+            int год; 
+            if (string.IsNullOrEmpty(textBox5.Text))
+            {
+                MessageBox.Show("Не введено название группы");
+                textBox5.Focus();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(comboBox1.Text))
+            {
+                MessageBox.Show("Не выбран факультет");
+                comboBox1.Focus();
+                return;
+            }
+
+            if (!int.TryParse(textBox1.Text,out год))
+            {
+                MessageBox.Show("Год должен быть задан числом");
+                textBox1.Focus();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(textBox2.Text))
+            {
+                MessageBox.Show("Не задан староста");
+                textBox2.Focus();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(textBox4.Text))
+            {
+                MessageBox.Show("Не задана почта группы");
+                textBox4.Focus();
+                return;
+            }
+            Form1.lstG.Add(new Учебная_группа(textBox5.Text, год, comboBox1.Text, textBox2.Text, textBox4.Text,lst));
             add = true;
             MessageBox.Show("Группа добавлена");
         }
@@ -68,6 +104,16 @@ namespace Курсач
             
             formS.AddGroupForm = this;
             formS.ShowDialog();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

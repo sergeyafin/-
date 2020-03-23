@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.учебнаягруппаBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -41,12 +40,16 @@
             this.факультетDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.старостаDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.почтаDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.учебнаягруппаBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.учебнаягруппаBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoGenerateColumns = false;
@@ -62,29 +65,25 @@
             this.dataGridView1.DataSource = this.учебнаягруппаBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(52, 64);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(448, 193);
+            this.dataGridView1.Size = new System.Drawing.Size(518, 193);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-            // 
-            // учебнаягруппаBindingSource
-            // 
-            this.учебнаягруппаBindingSource.DataSource = typeof(Курсач.Учебная_группа);
-            this.учебнаягруппаBindingSource.CurrentChanged += new System.EventHandler(this.учебнаягруппаBindingSource_CurrentChanged);
             // 
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(578, 236);
+            this.button3.Location = new System.Drawing.Point(594, 158);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(69, 46);
             this.button3.TabIndex = 2;
             this.button3.Text = "Изменить";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(578, 171);
+            this.button2.Location = new System.Drawing.Point(594, 211);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(69, 46);
             this.button2.TabIndex = 3;
@@ -94,7 +93,7 @@
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(578, 44);
+            this.button4.Location = new System.Drawing.Point(594, 54);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(69, 46);
             this.button4.TabIndex = 4;
@@ -105,7 +104,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(578, 106);
+            this.button1.Location = new System.Drawing.Point(594, 106);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(69, 46);
             this.button1.TabIndex = 5;
@@ -118,6 +117,7 @@
             this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
             this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
             this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.Visible = false;
             this.iDDataGridViewTextBoxColumn.Width = 43;
             // 
             // названиеDataGridViewTextBoxColumn
@@ -150,16 +150,21 @@
             // 
             // почтаDataGridViewTextBoxColumn
             // 
+            this.почтаDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.почтаDataGridViewTextBoxColumn.DataPropertyName = "Почта";
             this.почтаDataGridViewTextBoxColumn.HeaderText = "Почта";
             this.почтаDataGridViewTextBoxColumn.Name = "почтаDataGridViewTextBoxColumn";
-            this.почтаDataGridViewTextBoxColumn.Width = 62;
+            // 
+            // учебнаягруппаBindingSource
+            // 
+            this.учебнаягруппаBindingSource.DataSource = typeof(Курсач.Учебная_группа);
+            this.учебнаягруппаBindingSource.CurrentChanged += new System.EventHandler(this.учебнаягруппаBindingSource_CurrentChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(739, 321);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button4);

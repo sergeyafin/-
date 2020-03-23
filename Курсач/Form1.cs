@@ -33,7 +33,7 @@ namespace Курсач
             lst.Add(new Студент("Иванов", 2000, 37, "+7 (912) 342-44-36"));
 
 
-            lstG.Add(new Учебная_группа("ПИ18-3", 2018, "Факультет анализа рисков и экономической безопасности имени профессора В.К.Сенчагова", lst[2].Имя, "PI18-3@edu.fa.ru", lst));
+            lstG.Add(new Учебная_группа("ПИ18-3", 2018, "Факультет АРиЭБ", lst[2].Имя, "PI18-3@edu.fa.ru", lst));
 
             lst = new List<Студент>();
             lst.Add(new Студент("Красоткина", 2000, 70, "+7 (923) 701-49-36"));
@@ -88,6 +88,11 @@ namespace Курсач
             AddGroupForm formS = new AddGroupForm();
             formS.form1 = this;
             formS.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
         }
     }
     public class Учебная_группа

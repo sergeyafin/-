@@ -73,6 +73,7 @@ namespace Курсач
             Form1.lstG.Add(new Учебная_группа(textBox5.Text, год, comboBox1.Text, textBox2.Text, textBox4.Text,lst));
             add = true;
             MessageBox.Show("Группа добавлена");
+            form1.учебнаягруппаBindingSource.ResetBindings(false);
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)

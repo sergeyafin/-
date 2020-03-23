@@ -41,6 +41,7 @@
             this.старостаDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.почтаDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.учебнаягруппаBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.учебнаягруппаBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -72,7 +73,7 @@
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(594, 158);
+            this.button3.Location = new System.Drawing.Point(590, 130);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(69, 46);
             this.button3.TabIndex = 2;
@@ -83,7 +84,7 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(594, 211);
+            this.button2.Location = new System.Drawing.Point(590, 183);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(69, 46);
             this.button2.TabIndex = 3;
@@ -93,7 +94,7 @@
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(594, 54);
+            this.button4.Location = new System.Drawing.Point(590, 26);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(69, 46);
             this.button4.TabIndex = 4;
@@ -104,7 +105,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(594, 106);
+            this.button1.Location = new System.Drawing.Point(590, 78);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(69, 46);
             this.button1.TabIndex = 5;
@@ -160,12 +161,23 @@
             this.учебнаягруппаBindingSource.DataSource = typeof(Курсач.Учебная_группа);
             this.учебнаягруппаBindingSource.CurrentChanged += new System.EventHandler(this.учебнаягруппаBindingSource_CurrentChanged);
             // 
+            // button5
+            // 
+            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button5.Location = new System.Drawing.Point(590, 235);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(69, 46);
+            this.button5.TabIndex = 3;
+            this.button5.Text = "Выход";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(739, 321);
             this.Controls.Add(this.button3);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button1);
@@ -181,7 +193,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        public System.Windows.Forms.DataGridView dataGridView1;
         public System.Windows.Forms.BindingSource учебнаягруппаBindingSource;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
@@ -193,6 +205,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn факультетDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn старостаDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn почтаDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button button5;
     }
 }
 

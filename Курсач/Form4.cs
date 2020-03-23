@@ -54,6 +54,7 @@ namespace Курсач
             }
             AddGroupForm.lst.Add(new Студент(textBox1.Text, int.Parse(textBox2.Text), int.Parse(textBox5.Text), textBox4.Text));
             add = true;
+            AddGroupForm.студентBindingSource.ResetBindings(false);
         }
 
         private void AddStudentForm_Load(object sender, EventArgs e)

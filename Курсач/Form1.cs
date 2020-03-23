@@ -92,7 +92,14 @@ namespace Курсач
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            if (dataGridView1.CurrentRow == null)
+                return;
+            int n = dataGridView1.CurrentRow.Index;
+            EditGroupForm formS = new EditGroupForm();
+            formS.студентBindingSource.DataSource = lstG[n].Студенты;
+            formS.form1 = this;
+            formS.ShowDialog();
+            учебнаягруппаBindingSource.ResetCurrentItem();
         }
     }
     public class Учебная_группа

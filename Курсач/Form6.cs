@@ -10,18 +10,21 @@ using System.Windows.Forms;
 
 namespace Курсач
 {
-    public partial class AddStudentForm : Form
+    public partial class EditStudentForm : Form
     {
-        public AddGroupForm AddGroupForm;
+        public EditGroupForm EditGroupForm;
         bool add = false;
-        public AddStudentForm()
+        public EditStudentForm()
         {
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void EditStudentForm_Load(object sender, EventArgs e)
         {
-
+            textBox1.Text = EditGroupForm.lst[EditGroupForm.n].Имя;
+            textBox2.Text = EditGroupForm.lst[EditGroupForm.n].Год.ToString();
+            textBox5.Text = EditGroupForm.lst[EditGroupForm.n].Рейтинг.ToString();
+            textBox4.Text = EditGroupForm.lst[EditGroupForm.n].Телефон;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -52,37 +55,13 @@ namespace Курсач
                 textBox5.Focus();
                 return;
             }
-            AddGroupForm.lst.Add(new Студент(textBox1.Text, int.Parse(textBox2.Text), int.Parse(textBox5.Text), textBox4.Text));
-            add = true;
-            AddGroupForm.студентBindingSource.ResetBindings(false);
-        }
-
-        private void AddStudentForm_Load(object sender, EventArgs e)
-        {
-                
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            textBox5.Text = "";
-            textBox1.Text = "";
-            textBox2.Text = "";
-            textBox4.Text = "";
             
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (add)
-            {
-                AddGroupForm.студентBindingSource.ResetBindings(false);
-                
-            }
-            Close();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
+            EditGroupForm.lst[EditGroupForm.n].Имя = textBox1.Text;
+            EditGroupForm.lst[EditGroupForm.n].Год = год;
+            EditGroupForm.lst[EditGroupForm.n].Рейтинг = рейтинг;
+            EditGroupForm.lst[EditGroupForm.n].Телефон= textBox4.Text;
+            add = true;
+            EditGroupForm.студентBindingSource.ResetBindings(false);
 
         }
     }

@@ -68,6 +68,7 @@ namespace Курсач
             int n = dataGridView1.CurrentRow.Index;
             Form2 formS = new Form2();
             formS.студентBindingSource.DataSource = lstG[n].Студенты;
+            
             formS.ShowDialog();
             учебнаягруппаBindingSource.ResetCurrentItem();
               
@@ -96,7 +97,8 @@ namespace Курсач
                 return;
             int n = dataGridView1.CurrentRow.Index;
             EditGroupForm formS = new EditGroupForm();
-            formS.студентBindingSource.DataSource = lstG[n].Студенты;
+            formS.lst = lstG[n].Студенты;
+            
             formS.form1 = this;
             formS.ShowDialog();
             учебнаягруппаBindingSource.ResetCurrentItem();

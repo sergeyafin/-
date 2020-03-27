@@ -15,7 +15,9 @@ namespace Курсач
     {
         public Form1 form1;
         int i;
+        public int n;
         bool add = false;
+        public List<Студент> lst = new List<Студент>();
         public EditGroupForm()
         {
             InitializeComponent();
@@ -29,7 +31,7 @@ namespace Курсач
             textBox4.Text = (Form1.lstG[i].Почта);
             textBox5.Text = (Form1.lstG[i].Название);
             comboBox1.Text = (Form1.lstG[i].Факультет);
-
+            студентBindingSource.DataSource = lst;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -80,11 +82,18 @@ namespace Курсач
             Form1.lstG[i].Название=textBox5.Text;
             Form1.lstG[i].Факультет=comboBox1.Text;
             form1.учебнаягруппаBindingSource.ResetItem(i);
+            Close();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            
+            if (dataGridView1.CurrentRow == null)
+                return;
+            n = dataGridView1.CurrentRow.Index;
+            EditStudentForm formS = new EditStudentForm();
+
+            formS.EditGroupForm = this;
+            formS.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)

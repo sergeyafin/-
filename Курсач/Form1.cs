@@ -67,7 +67,8 @@ namespace Курсач
                 return;
             int n = dataGridView1.CurrentRow.Index;
             Form2 formS = new Form2();
-            formS.студентBindingSource.DataSource = lstG[n].Студенты;
+            formS.lst=lstG[n].Студенты;
+            
             
             formS.ShowDialog();
             учебнаягруппаBindingSource.ResetCurrentItem();
@@ -102,6 +103,41 @@ namespace Курсач
             formS.form1 = this;
             formS.ShowDialog();
             учебнаягруппаBindingSource.ResetCurrentItem();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentCell == null)
+                return;
+            if (dataGridView1.SelectedRows.Count>1)
+            {
+                if (MessageBox.Show(
+                    "Вы действительно хотите удалить несколько групп?", "Внимание",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    List<Учебная_группа> listDel = new List<Учебная_группа>();
+                    foreach (DataGridViewRow item in dataGridView1.SelectedRows)
+                        listDel.Add(lstG[item.Index]);
+                    foreach (Учебная_группа item in listDel)
+                        lstG.Remove(item);
+                    учебнаягруппаBindingSource.ResetBindings(false);
+                    return;
+                }
+                else
+                    return;
+            }
+            string grname = (string)dataGridView1.CurrentRow.Cells["названиеDataGridViewTextBoxColumn"].Value;
+            if (MessageBox.Show(
+                    "Вы действительно хотите удалить группу " + grname + " ?", "Внимание",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                return;
+            lstG.RemoveAt(dataGridView1.CurrentRow.Index);
+            учебнаягруппаBindingSource.ResetBindings(false);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
     public class Учебная_группа

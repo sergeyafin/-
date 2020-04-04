@@ -31,12 +31,13 @@
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
-            this.студентBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.имяDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.годDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.рейтингDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.телефонDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.студентBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.студентBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -58,25 +59,21 @@
             this.рейтингDataGridViewTextBoxColumn,
             this.телефонDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.студентBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(99, 69);
+            this.dataGridView1.Location = new System.Drawing.Point(73, 46);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(438, 229);
+            this.dataGridView1.Size = new System.Drawing.Size(301, 229);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(623, 206);
+            this.button1.Location = new System.Drawing.Point(537, 193);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(52, 41);
             this.button1.TabIndex = 1;
             this.button1.Text = "Выход";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // студентBindingSource
-            // 
-            this.студентBindingSource.DataSource = typeof(Курсач.Студент);
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -114,11 +111,26 @@
             this.телефонDataGridViewTextBoxColumn.HeaderText = "Телефон";
             this.телефонDataGridViewTextBoxColumn.Name = "телефонDataGridViewTextBoxColumn";
             // 
+            // студентBindingSource
+            // 
+            this.студентBindingSource.DataSource = typeof(Курсач.Студент);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(537, 117);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(52, 47);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Изменить студента";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(663, 326);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form2";
@@ -140,5 +152,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn годDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn рейтингDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn телефонDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button button2;
     }
 }

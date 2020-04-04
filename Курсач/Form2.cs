@@ -13,6 +13,8 @@ namespace Курсач
     public partial class Form2 : Form
     {
         public Form1 form1;
+        public List<Студент> lst = new List<Студент>();
+        public int n;
         public Form2()
         {
             InitializeComponent();
@@ -25,13 +27,24 @@ namespace Курсач
 
         private void Form2_Load(object sender, EventArgs e)
         {
-
+            студентBindingSource.DataSource = lst;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             
             Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow == null)
+                return;
+            n = dataGridView1.CurrentRow.Index;
+            EditStudentForm formS = new EditStudentForm();
+
+            formS.Form2 = this;
+            formS.ShowDialog();
         }
     }
 }

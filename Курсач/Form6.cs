@@ -13,6 +13,7 @@ namespace Курсач
     public partial class EditStudentForm : Form
     {
         public EditGroupForm EditGroupForm;
+        public Form2 Form2;
         bool add = false;
         public EditStudentForm()
         {
@@ -60,7 +61,14 @@ namespace Курсач
             EditGroupForm.lst[EditGroupForm.n].Год = год;
             EditGroupForm.lst[EditGroupForm.n].Рейтинг = рейтинг;
             EditGroupForm.lst[EditGroupForm.n].Телефон= textBox4.Text;
+           
+            Form2.lst[Form2.n].Имя = textBox1.Text;
+            Form2.lst[Form2.n].Год = год;
+            Form2.lst[Form2.n].Рейтинг = рейтинг;
+            Form2.lst[Form2.n].Телефон = textBox4.Text;
+
             add = true;
+            Form2.студентBindingSource.ResetBindings(false);
             EditGroupForm.студентBindingSource.ResetBindings(false);
 
         }

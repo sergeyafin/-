@@ -45,12 +45,14 @@
             this.button4 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.студентBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.имяDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.годDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.рейтингDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.телефонDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.студентBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.студентBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -132,7 +134,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(466, 63);
+            this.button1.Location = new System.Drawing.Point(465, 60);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(67, 40);
             this.button1.TabIndex = 2;
@@ -142,7 +144,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(466, 109);
+            this.button2.Location = new System.Drawing.Point(465, 106);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(67, 40);
             this.button2.TabIndex = 2;
@@ -152,7 +154,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(466, 251);
+            this.button3.Location = new System.Drawing.Point(465, 296);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(67, 33);
             this.button3.TabIndex = 2;
@@ -188,7 +190,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(466, 158);
+            this.button4.Location = new System.Drawing.Point(465, 152);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(67, 42);
             this.button4.TabIndex = 2;
@@ -199,10 +201,10 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Book Antiqua", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(129, 26);
+            this.label6.Font = new System.Drawing.Font("Book Antiqua", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(182, 26);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(206, 24);
+            this.label6.Size = new System.Drawing.Size(210, 26);
             this.label6.TabIndex = 4;
             this.label6.Text = "Добавление группы";
             // 
@@ -229,9 +231,25 @@
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // студентBindingSource
+            // button5
             // 
-            this.студентBindingSource.DataSource = typeof(Курсач.Студент);
+            this.button5.Location = new System.Drawing.Point(465, 200);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(67, 42);
+            this.button5.TabIndex = 2;
+            this.button5.Text = "Изменить студента";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(465, 248);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(67, 42);
+            this.button6.TabIndex = 2;
+            this.button6.Text = "Удалить студента";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -269,6 +287,10 @@
             this.телефонDataGridViewTextBoxColumn.HeaderText = "Телефон";
             this.телефонDataGridViewTextBoxColumn.Name = "телефонDataGridViewTextBoxColumn";
             // 
+            // студентBindingSource
+            // 
+            this.студентBindingSource.DataSource = typeof(Курсач.Студент);
+            // 
             // AddGroupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,6 +299,8 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -324,5 +348,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn годDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn рейтингDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn телефонDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
     }
 }

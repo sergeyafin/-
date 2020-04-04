@@ -13,7 +13,12 @@ namespace Курсач
     public partial class AddStudentForm : Form
     {
         public AddGroupForm AddGroupForm;
+        public EditGroupForm EditGroupForm;
+        public Form2 Form2;
         bool add = false;
+        bool egf = false;
+        bool agf = false;
+        bool f2 = false;
         public AddStudentForm()
         {
             InitializeComponent();
@@ -52,22 +57,49 @@ namespace Курсач
                 textBox5.Focus();
                 return;
             }
-            AddGroupForm.lst.Add(new Студент(textBox1.Text, int.Parse(textBox2.Text), int.Parse(textBox5.Text), textBox4.Text));
+            if (agf)
+            {
+                AddGroupForm.lst.Add(new Студент(textBox1.Text, int.Parse(textBox2.Text), int.Parse(textBox5.Text), textBox4.Text));
+                add = true;
+                AddGroupForm.студентBindingSource.ResetBindings(false);
+            }
+            if (egf)
+            {EditGroupForm.lst.Add(new Студент(textBox1.Text, int.Parse(textBox2.Text), int.Parse(textBox5.Text), textBox4.Text));
             add = true;
-            AddGroupForm.студентBindingSource.ResetBindings(false);
+            EditGroupForm.студентBindingSource.ResetBindings(false); }
+            if (f2)
+            {
+                Form2.lst.Add(new Студент(textBox1.Text, int.Parse(textBox2.Text), int.Parse(textBox5.Text), textBox4.Text));
+                add = true;
+                Form2.студентBindingSource.ResetBindings(false);
+            }
+            
         }
 
         private void AddStudentForm_Load(object sender, EventArgs e)
         {
-                
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Name == "AddGroupForm")
+                    agf = true;
+                if (f.Name == "EditGroupForm")
+                    egf = true;
+                if (f.Name == "Form2")
+                    f2 = true;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            textBox5.Text = "";
-            textBox1.Text = "";
-            textBox2.Text = "";
-            textBox4.Text = "";
+            if (MessageBox.Show(
+                         "Вы действительно хотите очистить все поля?", "Внимание",
+                         MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                textBox5.Text = "";
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox4.Text = "";
+            }
             
         }
 
@@ -75,8 +107,13 @@ namespace Курсач
         {
             if (add)
             {
-                AddGroupForm.студентBindingSource.ResetBindings(false);
-                
+                if (agf)
+                    AddGroupForm.студентBindingSource.ResetBindings(false);
+                if (egf)
+                    EditGroupForm.студентBindingSource.ResetBindings(false);
+                if (f2)
+                    Form2.студентBindingSource.ResetBindings(false);
+
             }
             Close();
         }

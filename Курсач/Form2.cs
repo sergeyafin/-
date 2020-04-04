@@ -46,5 +46,43 @@ namespace Курсач
             formS.Form2 = this;
             formS.ShowDialog();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            AddStudentForm formS = new AddStudentForm();
+
+            formS.Form2 = this;
+            formS.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentCell == null)
+                return;
+            if (dataGridView1.SelectedRows.Count > 1)
+            {
+                if (MessageBox.Show(
+                    "Вы действительно хотите удалить несколько студентов?", "Внимание",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    List<Студент> listDel = new List<Студент>();
+                    foreach (DataGridViewRow item in dataGridView1.SelectedRows)
+                        listDel.Add(lst[item.Index]);
+                    foreach (Студент item in listDel)
+                        lst.Remove(item);
+                    студентBindingSource.ResetBindings(false);
+                    return;
+                }
+                else
+                    return;
+            }
+            string stname = (string)dataGridView1.CurrentRow.Cells["имяDataGridViewTextBoxColumn"].Value;
+            if (MessageBox.Show(
+                    "Вы действительно хотите удалить студента " + stname + " ?", "Внимание",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                return;
+            lst.RemoveAt(dataGridView1.CurrentRow.Index);
+            студентBindingSource.ResetBindings(false);
+        }
     }
 }

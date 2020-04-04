@@ -13,10 +13,12 @@ namespace Курсач
     public partial class EditStudentForm : Form
     {
         public EditGroupForm EditGroupForm;
+        public AddGroupForm AddGroupForm;
         public Form2 Form2;
         bool add = false;
         bool f2 = false;
         bool egf = false;
+        bool agf = false;
         public EditStudentForm()
         {
             InitializeComponent();
@@ -31,6 +33,8 @@ namespace Курсач
                     f2 = true;
                 if (f.Name == "EditGroupForm")
                     egf = true;
+                if (f.Name == "AddGroupForm")
+                    agf = true;
             }
             
             if (f2)
@@ -46,6 +50,13 @@ namespace Курсач
                 textBox2.Text = EditGroupForm.lst[EditGroupForm.n].Год.ToString();
                 textBox5.Text = EditGroupForm.lst[EditGroupForm.n].Рейтинг.ToString();
                 textBox4.Text = EditGroupForm.lst[EditGroupForm.n].Телефон;
+            }
+            if (agf)
+            {
+                textBox1.Text = AddGroupForm.lst[AddGroupForm.n].Имя;
+                textBox2.Text = AddGroupForm.lst[AddGroupForm.n].Год.ToString();
+                textBox5.Text = AddGroupForm.lst[AddGroupForm.n].Рейтинг.ToString();
+                textBox4.Text = AddGroupForm.lst[AddGroupForm.n].Телефон;
             }
         }
 
@@ -84,6 +95,7 @@ namespace Курсач
                 EditGroupForm.lst[EditGroupForm.n].Рейтинг = рейтинг;
                 EditGroupForm.lst[EditGroupForm.n].Телефон = textBox4.Text;
                 EditGroupForm.студентBindingSource.ResetBindings(false);
+                Close();
             }
             if (f2)
             {
@@ -92,6 +104,16 @@ namespace Курсач
                 Form2.lst[Form2.n].Рейтинг = рейтинг;
                 Form2.lst[Form2.n].Телефон = textBox4.Text;
                 Form2.студентBindingSource.ResetBindings(false);
+                Close();
+            }
+            if (agf)
+            {
+                AddGroupForm.lst[AddGroupForm.n].Имя = textBox1.Text;
+                AddGroupForm.lst[AddGroupForm.n].Год = год;
+                AddGroupForm.lst[AddGroupForm.n].Рейтинг = рейтинг;
+                AddGroupForm.lst[AddGroupForm.n].Телефон = textBox4.Text;
+                AddGroupForm.студентBindingSource.ResetBindings(false);
+                Close();
             }
 
             add = true;
@@ -106,15 +128,25 @@ namespace Курсач
 
         private void button2_Click(object sender, EventArgs e)
         {
-            textBox1.Text = "";
-            textBox2.Text = "";
-            textBox5.Text = "";
-            textBox4.Text= "";
+            if (MessageBox.Show(
+                   "Вы действительно хотите очистить все поля?", "Внимание",
+                   MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox5.Text = "";
+                textBox4.Text = "";
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

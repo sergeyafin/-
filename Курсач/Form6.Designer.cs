@@ -51,6 +51,7 @@
             this.label5.Size = new System.Drawing.Size(340, 24);
             this.label5.TabIndex = 29;
             this.label5.Text = "Редактировать данные о студенте";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // button3
             // 
@@ -60,6 +61,7 @@
             this.button3.TabIndex = 26;
             this.button3.Text = "Выход";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -69,6 +71,7 @@
             this.button2.TabIndex = 27;
             this.button2.Text = "Очистить поля";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 

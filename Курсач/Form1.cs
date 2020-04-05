@@ -139,6 +139,8 @@ namespace Курсач
         {
             Close();
         }
+
+        
     }
     public class Учебная_группа
     {

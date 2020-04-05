@@ -75,6 +75,7 @@
             this.dataGridView1.DataSource = this.студентBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(63, 192);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(393, 123);
             this.dataGridView1.TabIndex = 21;
             // 
@@ -83,6 +84,7 @@
             this.имяDataGridViewTextBoxColumn.DataPropertyName = "Имя";
             this.имяDataGridViewTextBoxColumn.HeaderText = "Имя";
             this.имяDataGridViewTextBoxColumn.Name = "имяDataGridViewTextBoxColumn";
+            this.имяDataGridViewTextBoxColumn.ReadOnly = true;
             this.имяDataGridViewTextBoxColumn.Width = 54;
             // 
             // годDataGridViewTextBoxColumn
@@ -90,6 +92,7 @@
             this.годDataGridViewTextBoxColumn.DataPropertyName = "Год";
             this.годDataGridViewTextBoxColumn.HeaderText = "Год";
             this.годDataGridViewTextBoxColumn.Name = "годDataGridViewTextBoxColumn";
+            this.годDataGridViewTextBoxColumn.ReadOnly = true;
             this.годDataGridViewTextBoxColumn.Width = 50;
             // 
             // рейтингDataGridViewTextBoxColumn
@@ -97,6 +100,7 @@
             this.рейтингDataGridViewTextBoxColumn.DataPropertyName = "Рейтинг";
             this.рейтингDataGridViewTextBoxColumn.HeaderText = "Рейтинг";
             this.рейтингDataGridViewTextBoxColumn.Name = "рейтингDataGridViewTextBoxColumn";
+            this.рейтингDataGridViewTextBoxColumn.ReadOnly = true;
             this.рейтингDataGridViewTextBoxColumn.Width = 73;
             // 
             // телефонDataGridViewTextBoxColumn
@@ -104,6 +108,7 @@
             this.телефонDataGridViewTextBoxColumn.DataPropertyName = "Телефон";
             this.телефонDataGridViewTextBoxColumn.HeaderText = "Телефон";
             this.телефонDataGridViewTextBoxColumn.Name = "телефонDataGridViewTextBoxColumn";
+            this.телефонDataGridViewTextBoxColumn.ReadOnly = true;
             this.телефонDataGridViewTextBoxColumn.Width = 77;
             // 
             // iDDataGridViewTextBoxColumn
@@ -111,6 +116,7 @@
             this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
             this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
             this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
             this.iDDataGridViewTextBoxColumn.Visible = false;
             this.iDDataGridViewTextBoxColumn.Width = 43;
             // 

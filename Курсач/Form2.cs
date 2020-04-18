@@ -31,6 +31,10 @@ namespace Курсач
         {
             rowAdd = dataGridView1.RowCount;
             студентBindingSource.DataSource = lst;
+            radioButton3.Checked = Properties.Settings.Default.rb1;
+            radioButton2.Checked = Properties.Settings.Default.rb2;
+            radioButton1.Checked = Properties.Settings.Default.rb3;
+            textBox4.Text = Properties.Settings.Default.tb4;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -138,6 +142,14 @@ namespace Курсач
         {
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
                 dataGridView1.Rows[i].Visible = true;
+        }
+
+        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Properties.Settings.Default.tb4 = textBox4.Text;
+            Properties.Settings.Default.rb1 = radioButton3.Checked;
+            Properties.Settings.Default.rb2 = radioButton2.Checked;
+            Properties.Settings.Default.rb3 = radioButton1.Checked;
         }
     }
 }

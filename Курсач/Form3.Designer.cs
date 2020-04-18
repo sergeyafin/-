@@ -45,14 +45,14 @@
             this.button4 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.имяDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.годDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.рейтингDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.телефонDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.студентBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.студентBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -134,6 +134,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Location = new System.Drawing.Point(465, 60);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(67, 40);
@@ -144,6 +145,7 @@
             // 
             // button2
             // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.Location = new System.Drawing.Point(465, 106);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(67, 40);
@@ -154,6 +156,7 @@
             // 
             // button3
             // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.Location = new System.Drawing.Point(465, 296);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(67, 33);
@@ -184,12 +187,13 @@
             "Юридический факультет"});
             this.comboBox1.Location = new System.Drawing.Point(94, 152);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(352, 21);
+            this.comboBox1.Size = new System.Drawing.Size(353, 21);
             this.comboBox1.TabIndex = 3;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // button4
             // 
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button4.Location = new System.Drawing.Point(465, 152);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(67, 42);
@@ -228,9 +232,31 @@
             this.dataGridView1.Location = new System.Drawing.Point(53, 192);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(393, 123);
+            this.dataGridView1.Size = new System.Drawing.Size(394, 123);
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // button5
+            // 
+            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button5.Location = new System.Drawing.Point(465, 200);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(67, 42);
+            this.button5.TabIndex = 2;
+            this.button5.Text = "Изменить студента";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button6.Location = new System.Drawing.Point(465, 248);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(67, 42);
+            this.button6.TabIndex = 2;
+            this.button6.Text = "Удалить студента";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -277,31 +303,11 @@
             // 
             this.студентBindingSource.DataSource = typeof(Курсач.Студент);
             // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(465, 200);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(67, 42);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "Изменить студента";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(465, 248);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(67, 42);
-            this.button6.TabIndex = 2;
-            this.button6.Text = "Удалить студента";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
             // AddGroupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(559, 341);
+            this.ClientSize = new System.Drawing.Size(560, 341);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.comboBox1);

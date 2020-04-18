@@ -18,8 +18,10 @@ namespace Курсач
         }
         public static List<Учебная_группа> lstG = new List<Учебная_группа>();
         List<string> lstGroupName = new List<string>();
+        int rowAdd;
         private void Form1_Load(object sender, EventArgs e)
         {
+            rowAdd = dataGridView1.RowCount;
             List<Студент> lst = new List<Студент>();
             lst.Add(new Студент("Иванов", 2000, 60, "+7 (927) 159-25-89"));
             lst.Add(new Студент("Иванова", 2000, 50, "+7 (965) 023-77-51"));
@@ -75,15 +77,6 @@ namespace Курсач
               
         }
 
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-
-        private void учебнаягруппаBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -140,7 +133,46 @@ namespace Курсач
             Close();
         }
 
-        
+        private void button6_Click(object sender, EventArgs e)
+        {
+            dataGridView1.CurrentCell = null;
+            for (int i=0;i<dataGridView1.Rows.Count-rowAdd;i++)
+            {
+                if (TestRow(i))
+                    dataGridView1.Rows[i].Visible = true;
+                else
+                    dataGridView1.Rows[i].Visible = false;
+            }
+        }
+        private bool TestRow(int i)
+        {
+            if (textBox1.Text != "" && lstG[i].Название.ToUpper().StartsWith(textBox1.Text.ToUpper())==false) return false;
+
+            if (textBox2.Text != "" && lstG[i].Год.ToString().ToUpper().StartsWith(textBox2.Text.ToUpper()) == false) return false;
+
+            if (textBox3.Text != "" && lstG[i].Староста.ToUpper().StartsWith(textBox3.Text.ToUpper()) == false) return false;
+
+            if (textBox4.Text != "" && lstG[i].Почта.ToUpper().StartsWith(textBox4.Text.ToUpper()) == false) return false;
+
+            if (comboBox2.Text != "" && lstG[i].Факультет.ToUpper().StartsWith(comboBox2.Text.ToUpper()) == false) return false;
+
+            return true;
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            comboBox2.Text = "";
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                dataGridView1.Rows[i].Visible = true;
+        }
     }
     public class Учебная_группа
     {

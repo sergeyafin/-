@@ -14,6 +14,7 @@ namespace Курсач
     {
         public Form1 form1;
         public List<Студент> lst = new List<Студент>();
+        int rowAdd;
         public int n;
         public Form2()
         {
@@ -27,6 +28,7 @@ namespace Курсач
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            rowAdd = dataGridView1.RowCount;
             студентBindingSource.DataSource = lst;
         }
 
@@ -83,6 +85,30 @@ namespace Курсач
                 return;
             lst.RemoveAt(dataGridView1.CurrentRow.Index);
             студентBindingSource.ResetBindings(false);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            dataGridView1.CurrentCell = null;
+            for (int i = 0; i < dataGridView1.Rows.Count - rowAdd; i++)
+            {
+                if (TestRow(i))
+                    dataGridView1.Rows[i].Visible = true;
+                else
+                    dataGridView1.Rows[i].Visible = false;
+            }
+        }
+        private bool TestRow(int i)
+        {
+            if (textBox1.Text != "" && lst[i].Имя.ToUpper().StartsWith(textBox1.Text.ToUpper()) == false) return false;
+
+            if (textBox2.Text != "" && lst[i].Год.ToString().ToUpper().StartsWith(textBox2.Text.ToUpper()) == false) return false;
+
+            if (textBox3.Text != "" && lst[i].Рейтинг.ToString().ToUpper().StartsWith(textBox3.Text.ToUpper()) == false) return false;
+
+            if (textBox4.Text != "" && lst[i].Телефон.ToUpper().StartsWith(textBox4.Text.ToUpper()) == false) return false;
+
+            return true;
         }
     }
 }

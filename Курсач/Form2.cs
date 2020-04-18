@@ -15,6 +15,7 @@ namespace Курсач
         public Form1 form1;
         public List<Студент> lst = new List<Студент>();
         int rowAdd;
+        int rating;
         public int n;
         public Form2()
         {
@@ -89,6 +90,16 @@ namespace Курсач
 
         private void button6_Click(object sender, EventArgs e)
         {
+            
+            
+            if (textBox4.Text!="")
+            if (!int.TryParse(textBox4.Text,out rating))
+            {
+                MessageBox.Show("Рейтинг должен быть задан числом");
+                textBox4.Focus();
+                return;
+            }
+
             dataGridView1.CurrentCell = null;
             for (int i = 0; i < dataGridView1.Rows.Count - rowAdd; i++)
             {
@@ -104,11 +115,29 @@ namespace Курсач
 
             if (textBox2.Text != "" && lst[i].Год.ToString().ToUpper().StartsWith(textBox2.Text.ToUpper()) == false) return false;
 
-            if (textBox3.Text != "" && lst[i].Рейтинг.ToString().ToUpper().StartsWith(textBox3.Text.ToUpper()) == false) return false;
+            if (radioButton3.Checked && textBox4.Text != "" && lst[i].Рейтинг < int.Parse(textBox4.Text)) return false;
 
-            if (textBox4.Text != "" && lst[i].Телефон.ToUpper().StartsWith(textBox4.Text.ToUpper()) == false) return false;
+            if (radioButton2.Checked && textBox4.Text != "" && lst[i].Рейтинг > int.Parse(textBox4.Text)) return false;
+
+            if (radioButton1.Checked && textBox4.Text != "" && lst[i].Рейтинг != int.Parse(textBox4.Text)) return false;
+
+            if (textBox3.Text != "" && lst[i].Телефон.ToUpper().StartsWith(textBox3.Text.ToUpper()) == false) return false;
 
             return true;
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                dataGridView1.Rows[i].Visible = true;
         }
     }
 }

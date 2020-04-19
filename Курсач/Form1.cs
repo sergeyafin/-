@@ -207,7 +207,7 @@ namespace Курсач
                     dataGridView1.Columns[e.ColumnIndex].HeaderText = dataGridView1.Columns[e.ColumnIndex].HeaderText + "↓";
                 if (sort_order == -1)
                     dataGridView1.Columns[e.ColumnIndex].HeaderText = dataGridView1.Columns[e.ColumnIndex].HeaderText + "↑";
-
+                 
                 switch (dataGridView1.Columns[e.ColumnIndex].Name)
                 {
                     case "название":
@@ -245,6 +245,7 @@ namespace Курсач
 
                 }
                 учебнаягруппаBindingSource.ResetBindings(false);
+                
             }
         }
 

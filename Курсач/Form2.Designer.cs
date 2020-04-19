@@ -30,17 +30,22 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.студентBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -48,19 +53,14 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.имяDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.годDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.рейтингDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.телефонDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.студентBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.имя = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.год = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.рейтинг = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.телефон = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.студентBindingSource)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -75,10 +75,10 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.iDDataGridViewTextBoxColumn,
-            this.имяDataGridViewTextBoxColumn,
-            this.годDataGridViewTextBoxColumn,
-            this.рейтингDataGridViewTextBoxColumn,
-            this.телефонDataGridViewTextBoxColumn});
+            this.имя,
+            this.год,
+            this.рейтинг,
+            this.телефон});
             this.dataGridView1.DataSource = this.студентBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(22, 69);
             this.dataGridView1.Name = "dataGridView1";
@@ -86,6 +86,11 @@
             this.dataGridView1.Size = new System.Drawing.Size(505, 229);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_ColumnHeaderMouseClick);
+            // 
+            // студентBindingSource
+            // 
+            this.студентBindingSource.DataSource = typeof(Курсач.Студент);
             // 
             // button1
             // 
@@ -164,6 +169,48 @@
             this.panel1.Size = new System.Drawing.Size(567, 130);
             this.panel1.TabIndex = 11;
             // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.BackColor = System.Drawing.Color.LightGray;
+            this.radioButton3.Checked = global::Курсач.Properties.Settings.Default.rb1;
+            this.radioButton3.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::Курсач.Properties.Settings.Default, "rb1", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.radioButton3.Location = new System.Drawing.Point(297, 54);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(37, 17);
+            this.radioButton3.TabIndex = 15;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = ">=";
+            this.radioButton3.UseVisualStyleBackColor = false;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.BackColor = System.Drawing.Color.LightGray;
+            this.radioButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.radioButton2.Checked = global::Курсач.Properties.Settings.Default.rb2;
+            this.radioButton2.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::Курсач.Properties.Settings.Default, "rb2", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.radioButton2.Location = new System.Drawing.Point(349, 54);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(37, 17);
+            this.radioButton2.TabIndex = 15;
+            this.radioButton2.Text = "<=";
+            this.radioButton2.UseVisualStyleBackColor = false;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.BackColor = System.Drawing.Color.LightGray;
+            this.radioButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.radioButton1.Checked = global::Курсач.Properties.Settings.Default.rb3;
+            this.radioButton1.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::Курсач.Properties.Settings.Default, "rb3", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.radioButton1.Location = new System.Drawing.Point(398, 54);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(31, 17);
+            this.radioButton1.TabIndex = 15;
+            this.radioButton1.Text = "=";
+            this.radioButton1.UseVisualStyleBackColor = false;
+            // 
             // button8
             // 
             this.button8.Location = new System.Drawing.Point(464, 84);
@@ -213,6 +260,16 @@
             this.label3.Size = new System.Drawing.Size(32, 18);
             this.label3.TabIndex = 12;
             this.label3.Text = "Год";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Perpetua", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(259, 33);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(210, 18);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Как фильтровать по рейтингу:";
             // 
             // label4
             // 
@@ -274,58 +331,6 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Фильтрация";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Perpetua", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(259, 33);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(210, 18);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Как фильтровать по рейтингу:";
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.BackColor = System.Drawing.Color.LightGray;
-            this.radioButton3.Checked = global::Курсач.Properties.Settings.Default.rb1;
-            this.radioButton3.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::Курсач.Properties.Settings.Default, "rb1", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.radioButton3.Location = new System.Drawing.Point(297, 54);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(37, 17);
-            this.radioButton3.TabIndex = 15;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = ">=";
-            this.radioButton3.UseVisualStyleBackColor = false;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.BackColor = System.Drawing.Color.LightGray;
-            this.radioButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.radioButton2.Checked = global::Курсач.Properties.Settings.Default.rb2;
-            this.radioButton2.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::Курсач.Properties.Settings.Default, "rb2", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.radioButton2.Location = new System.Drawing.Point(349, 54);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(37, 17);
-            this.radioButton2.TabIndex = 15;
-            this.radioButton2.Text = "<=";
-            this.radioButton2.UseVisualStyleBackColor = false;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.BackColor = System.Drawing.Color.LightGray;
-            this.radioButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.radioButton1.Checked = global::Курсач.Properties.Settings.Default.rb3;
-            this.radioButton1.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::Курсач.Properties.Settings.Default, "rb3", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.radioButton1.Location = new System.Drawing.Point(398, 54);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(31, 17);
-            this.radioButton1.TabIndex = 15;
-            this.radioButton1.Text = "=";
-            this.radioButton1.UseVisualStyleBackColor = false;
-            // 
             // iDDataGridViewTextBoxColumn
             // 
             this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
@@ -335,41 +340,37 @@
             this.iDDataGridViewTextBoxColumn.Visible = false;
             this.iDDataGridViewTextBoxColumn.Width = 43;
             // 
-            // имяDataGridViewTextBoxColumn
+            // имя
             // 
-            this.имяDataGridViewTextBoxColumn.DataPropertyName = "Имя";
-            this.имяDataGridViewTextBoxColumn.HeaderText = "Имя";
-            this.имяDataGridViewTextBoxColumn.Name = "имяDataGridViewTextBoxColumn";
-            this.имяDataGridViewTextBoxColumn.ReadOnly = true;
-            this.имяDataGridViewTextBoxColumn.Width = 54;
+            this.имя.DataPropertyName = "Имя";
+            this.имя.HeaderText = "Имя";
+            this.имя.Name = "имя";
+            this.имя.ReadOnly = true;
+            this.имя.Width = 54;
             // 
-            // годDataGridViewTextBoxColumn
+            // год
             // 
-            this.годDataGridViewTextBoxColumn.DataPropertyName = "Год";
-            this.годDataGridViewTextBoxColumn.HeaderText = "Год";
-            this.годDataGridViewTextBoxColumn.Name = "годDataGridViewTextBoxColumn";
-            this.годDataGridViewTextBoxColumn.ReadOnly = true;
-            this.годDataGridViewTextBoxColumn.Width = 50;
+            this.год.DataPropertyName = "Год";
+            this.год.HeaderText = "Год";
+            this.год.Name = "год";
+            this.год.ReadOnly = true;
+            this.год.Width = 50;
             // 
-            // рейтингDataGridViewTextBoxColumn
+            // рейтинг
             // 
-            this.рейтингDataGridViewTextBoxColumn.DataPropertyName = "Рейтинг";
-            this.рейтингDataGridViewTextBoxColumn.HeaderText = "Рейтинг";
-            this.рейтингDataGridViewTextBoxColumn.Name = "рейтингDataGridViewTextBoxColumn";
-            this.рейтингDataGridViewTextBoxColumn.ReadOnly = true;
-            this.рейтингDataGridViewTextBoxColumn.Width = 73;
+            this.рейтинг.DataPropertyName = "Рейтинг";
+            this.рейтинг.HeaderText = "Рейтинг";
+            this.рейтинг.Name = "рейтинг";
+            this.рейтинг.ReadOnly = true;
+            this.рейтинг.Width = 73;
             // 
-            // телефонDataGridViewTextBoxColumn
+            // телефон
             // 
-            this.телефонDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.телефонDataGridViewTextBoxColumn.DataPropertyName = "Телефон";
-            this.телефонDataGridViewTextBoxColumn.HeaderText = "Телефон";
-            this.телефонDataGridViewTextBoxColumn.Name = "телефонDataGridViewTextBoxColumn";
-            this.телефонDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // студентBindingSource
-            // 
-            this.студентBindingSource.DataSource = typeof(Курсач.Студент);
+            this.телефон.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.телефон.DataPropertyName = "Телефон";
+            this.телефон.HeaderText = "Телефон";
+            this.телефон.Name = "телефон";
+            this.телефон.ReadOnly = true;
             // 
             // Form2
             // 
@@ -388,9 +389,9 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form2_FormClosed);
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.студентBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.студентBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -401,11 +402,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         public System.Windows.Forms.BindingSource студентBindingSource;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn имяDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn годDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn рейтингDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn телефонDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
@@ -427,5 +423,10 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn имя;
+        private System.Windows.Forms.DataGridViewTextBoxColumn год;
+        private System.Windows.Forms.DataGridViewTextBoxColumn рейтинг;
+        private System.Windows.Forms.DataGridViewTextBoxColumn телефон;
     }
 }

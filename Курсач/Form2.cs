@@ -16,6 +16,9 @@ namespace Курсач
         public List<Студент> lst = new List<Студент>();
         int rowAdd;
         int rating;
+        int sort_order = -1;
+        bool first_sort = true;
+        int current_column = 50;
         public int n;
         public Form2()
         {
@@ -150,6 +153,89 @@ namespace Курсач
             Properties.Settings.Default.rb1 = radioButton3.Checked;
             Properties.Settings.Default.rb2 = radioButton2.Checked;
             Properties.Settings.Default.rb3 = radioButton1.Checked;
+        }
+
+        private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (dataGridView1.Rows.Count > rowAdd)
+            {
+                //если нажали на столбец не в первый раз подряд, нужно стереть добавление стрелочки в прошлый раз
+                if (current_column == e.ColumnIndex)
+                    dataGridView1.Columns[e.ColumnIndex].HeaderText = dataGridView1.Columns[e.ColumnIndex].HeaderText.Substring(0, dataGridView1.Columns[e.ColumnIndex].HeaderText.Length - 1);
+                //если нажали на другой столбец или нажали в первый раз
+                if (current_column != e.ColumnIndex)
+                {
+                    sort_order = -1;
+                    //если нажали на другой столбец, надо стереть изменения в предыдущем столбце
+                    if (!first_sort)
+                        dataGridView1.Columns[current_column].HeaderText = dataGridView1.Columns[current_column].HeaderText.Substring(0, dataGridView1.Columns[current_column].HeaderText.Length - 1);
+                    //если нажали в первый раз, стирать ничего не надо
+                    else
+                        first_sort = false;
+
+                    current_column = e.ColumnIndex;
+                }
+
+
+                sort_order = -1 * sort_order;
+                //sort_order = -1 - по убыванию
+                //sort_order = 1 - по возрастанию
+
+                if (sort_order == 1)
+                    dataGridView1.Columns[e.ColumnIndex].HeaderText = dataGridView1.Columns[e.ColumnIndex].HeaderText + "↓";
+                if (sort_order == -1)
+                    dataGridView1.Columns[e.ColumnIndex].HeaderText = dataGridView1.Columns[e.ColumnIndex].HeaderText + "↑";
+
+                switch (dataGridView1.Columns[e.ColumnIndex].Name)
+                {
+                    case "имя":
+                        lst.Sort(delegate (Студент a1, Студент a2)
+                        {
+                            return sort_order * a1.Имя.CompareTo(a2.Имя);
+                        });
+                        break;
+                    case "год":
+                        lst.Sort(delegate (Студент a1, Студент a2)
+                        {
+                            return sort_order * a1.Год.CompareTo(a2.Год);
+                        });
+                        break;
+                    case "рейтинг":
+                        lst.Sort(delegate (Студент a1, Студент a2)
+                        {
+                            return sort_order * a1.Рейтинг.CompareTo(a2.Рейтинг);
+                        });
+                        break;
+                    
+                    case "телефон":
+                        lst.Sort(delegate (Студент a1, Студент a2)
+                        {
+                            return sort_order * a1.Телефон.CompareTo(a2.Телефон);
+                        });
+                        break;
+                    default:
+                        return;
+
+                }
+                студентBindingSource.ResetBindings(false);
+
+                if (textBox4.Text != "")
+                    if (!int.TryParse(textBox4.Text, out rating))
+                    {
+                        MessageBox.Show("Рейтинг должен быть задан числом");
+                        textBox4.Focus();
+                        return;
+                    }
+
+                dataGridView1.CurrentCell = null;
+                for (int i = 0; i < dataGridView1.Rows.Count - rowAdd; i++)
+                {
+                    if (TestRow(i))
+                        dataGridView1.Rows[i].Visible = true;
+                    else
+                        dataGridView1.Rows[i].Visible = false;
+                }
+            }
         }
     }
 }

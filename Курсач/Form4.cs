@@ -72,6 +72,7 @@ namespace Курсач
                 Form2.lst.Add(new Студент(textBox1.Text, int.Parse(textBox2.Text), int.Parse(textBox5.Text), textBox4.Text));
                 add = true;
                 Form2.студентBindingSource.ResetBindings(false);
+                Form2.Filter();
             }
             
         }
@@ -112,7 +113,10 @@ namespace Курсач
                 if (egf)
                     EditGroupForm.студентBindingSource.ResetBindings(false);
                 if (f2)
+                {
                     Form2.студентBindingSource.ResetBindings(false);
+                    Form2.Filter();
+                        }
 
             }
             Close();

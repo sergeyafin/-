@@ -75,6 +75,7 @@ namespace Курсач
             add = true;
             MessageBox.Show("Группа добавлена");
             form1.учебнаягруппаBindingSource.ResetBindings(false);
+            form1.Filter();
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)

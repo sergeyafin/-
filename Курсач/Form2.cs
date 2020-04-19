@@ -81,31 +81,36 @@ namespace Курсач
                     foreach (Студент item in listDel)
                         lst.Remove(item);
                     студентBindingSource.ResetBindings(false);
+                    Filter();
                     return;
                 }
                 else
                     return;
             }
-            string stname = (string)dataGridView1.CurrentRow.Cells["имяDataGridViewTextBoxColumn"].Value;
+            string stname = (string)dataGridView1.CurrentRow.Cells["имя"].Value;
             if (MessageBox.Show(
                     "Вы действительно хотите удалить студента " + stname + " ?", "Внимание",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 return;
             lst.RemoveAt(dataGridView1.CurrentRow.Index);
             студентBindingSource.ResetBindings(false);
+            Filter();
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            
-            
-            if (textBox4.Text!="")
-            if (!int.TryParse(textBox4.Text,out rating))
-            {
-                MessageBox.Show("Рейтинг должен быть задан числом");
-                textBox4.Focus();
-                return;
-            }
+            Filter();
+           
+        }
+        public void Filter()
+        {
+            if (textBox4.Text != "")
+                if (!int.TryParse(textBox4.Text, out rating))
+                {
+                    MessageBox.Show("Рейтинг должен быть задан числом");
+                    textBox4.Focus();
+                    return;
+                }
 
             dataGridView1.CurrentCell = null;
             for (int i = 0; i < dataGridView1.Rows.Count - rowAdd; i++)
@@ -218,23 +223,9 @@ namespace Курсач
 
                 }
                 студентBindingSource.ResetBindings(false);
+                Filter();
 
-                if (textBox4.Text != "")
-                    if (!int.TryParse(textBox4.Text, out rating))
-                    {
-                        MessageBox.Show("Рейтинг должен быть задан числом");
-                        textBox4.Focus();
-                        return;
-                    }
-
-                dataGridView1.CurrentCell = null;
-                for (int i = 0; i < dataGridView1.Rows.Count - rowAdd; i++)
-                {
-                    if (TestRow(i))
-                        dataGridView1.Rows[i].Visible = true;
-                    else
-                        dataGridView1.Rows[i].Visible = false;
-                }
+                
             }
         }
     }

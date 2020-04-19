@@ -77,6 +77,7 @@ namespace Курсач
             
             formS.ShowDialog();
             учебнаягруппаBindingSource.ResetCurrentItem();
+            Filter();
               
         }
 
@@ -86,6 +87,7 @@ namespace Курсач
             AddGroupForm formS = new AddGroupForm();
             formS.form1 = this;
             formS.ShowDialog();
+            Filter();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -99,6 +101,7 @@ namespace Курсач
             formS.form1 = this;
             formS.ShowDialog();
             учебнаягруппаBindingSource.ResetCurrentItem();
+            Filter();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -117,18 +120,20 @@ namespace Курсач
                     foreach (Учебная_группа item in listDel)
                         lstG.Remove(item);
                     учебнаягруппаBindingSource.ResetBindings(false);
+                    Filter();
                     return;
                 }
                 else
                     return;
             }
-            string grname = (string)dataGridView1.CurrentRow.Cells["названиеDataGridViewTextBoxColumn"].Value;
+            string grname = (string)dataGridView1.CurrentRow.Cells["название"].Value;
             if (MessageBox.Show(
                     "Вы действительно хотите удалить группу " + grname + " ?", "Внимание",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 return;
             lstG.RemoveAt(dataGridView1.CurrentRow.Index);
             учебнаягруппаBindingSource.ResetBindings(false);
+            Filter();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -138,8 +143,12 @@ namespace Курсач
 
         private void button6_Click(object sender, EventArgs e)
         {
+            Filter();
+        }
+        public void Filter()
+        {
             dataGridView1.CurrentCell = null;
-            for (int i=0;i<dataGridView1.Rows.Count-rowAdd;i++)
+            for (int i = 0; i < dataGridView1.Rows.Count - rowAdd; i++)
             {
                 if (TestRow(i))
                     dataGridView1.Rows[i].Visible = true;
@@ -245,7 +254,8 @@ namespace Курсач
 
                 }
                 учебнаягруппаBindingSource.ResetBindings(false);
-                
+                Filter();
+
             }
         }
 

@@ -104,6 +104,7 @@ namespace Курсач
                 Form2.lst[Form2.n].Рейтинг = рейтинг;
                 Form2.lst[Form2.n].Телефон = textBox4.Text;
                 Form2.студентBindingSource.ResetBindings(false);
+                Form2.Filter();
                 Close();
             }
             if (agf)

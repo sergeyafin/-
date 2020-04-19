@@ -82,6 +82,7 @@ namespace Курсач
             Form1.lstG[i].Название=textBox5.Text;
             Form1.lstG[i].Факультет=comboBox1.Text;
             form1.учебнаягруппаBindingSource.ResetItem(i);
+            form1.Filter();
             Close();
         }
 

@@ -19,6 +19,9 @@ namespace Курсач
         public static List<Учебная_группа> lstG = new List<Учебная_группа>();
         List<string> lstGroupName = new List<string>();
         int rowAdd;
+        int sort_order=-1;
+        bool first_sort = true;
+        int current_column=50;
         private void Form1_Load(object sender, EventArgs e)
         {
             rowAdd = dataGridView1.RowCount;
@@ -172,6 +175,82 @@ namespace Курсач
         {
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
                 dataGridView1.Rows[i].Visible = true;
+        }
+
+        private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (dataGridView1.Rows.Count > rowAdd)
+            {
+                //если нажали на столбец не в первый раз подряд, нужно стереть добавление стрелочки в прошлый раз
+                if (current_column == e.ColumnIndex)
+                    dataGridView1.Columns[e.ColumnIndex].HeaderText = dataGridView1.Columns[e.ColumnIndex].HeaderText.Substring(0, dataGridView1.Columns[e.ColumnIndex].HeaderText.Length-1);
+                //если нажали на другой столбец или нажали в первый раз
+                if (current_column != e.ColumnIndex)
+                {
+                    sort_order = -1;
+                    //если нажали на другой столбец, надо стереть изменения в предыдущем столбце
+                    if (!first_sort)
+                        dataGridView1.Columns[current_column].HeaderText = dataGridView1.Columns[current_column].HeaderText.Substring(0, dataGridView1.Columns[current_column].HeaderText.Length - 1);
+                    //если нажали в первый раз, стирать ничего не надо
+                    else
+                        first_sort = false;
+
+                    current_column = e.ColumnIndex;
+                }
+
+
+                sort_order = -1 * sort_order;
+                //sort_order = -1 - по убыванию
+                //sort_order = 1 - по возрастанию
+
+                if (sort_order == 1)
+                    dataGridView1.Columns[e.ColumnIndex].HeaderText = dataGridView1.Columns[e.ColumnIndex].HeaderText + "↓";
+                if (sort_order == -1)
+                    dataGridView1.Columns[e.ColumnIndex].HeaderText = dataGridView1.Columns[e.ColumnIndex].HeaderText + "↑";
+
+                switch (dataGridView1.Columns[e.ColumnIndex].Name)
+                {
+                    case "название":
+                        lstG.Sort(delegate (Учебная_группа a1, Учебная_группа a2)
+                        {
+                            return sort_order * a1.Название.CompareTo(a2.Название);
+                        });
+                            break;
+                    case "год":
+                        lstG.Sort(delegate (Учебная_группа a1, Учебная_группа a2)
+                        {
+                            return sort_order * a1.Год.CompareTo(a2.Год);
+                        });
+                        break;
+                    case "факультет":
+                        lstG.Sort(delegate (Учебная_группа a1, Учебная_группа a2)
+                        {
+                            return sort_order * a1.Факультет.CompareTo(a2.Факультет);
+                        });
+                        break;
+                    case "староста":
+                        lstG.Sort(delegate (Учебная_группа a1, Учебная_группа a2)
+                        {
+                            return sort_order * a1.Староста.CompareTo(a2.Староста);
+                        });
+                        break;
+                    case "почта":
+                        lstG.Sort(delegate (Учебная_группа a1, Учебная_группа a2)
+                        {
+                            return sort_order * a1.Почта.CompareTo(a2.Почта);
+                        });
+                        break;
+                    default:
+                        return;
+
+                }
+                учебнаягруппаBindingSource.ResetBindings(false);
+            }
+        }
+
+        private void учебнаягруппаBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
         }
     }
     public class Учебная_группа

@@ -44,17 +44,28 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button4 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.студентBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.учебная_группаBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this._24_04_GroupStudentDataSet = new Курсач._24_04_GroupStudentDataSet();
+            this.groupsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.groupsTableAdapter = new Курсач._24_04_GroupStudentDataSetTableAdapters.GroupsTableAdapter();
+            this.tableAdapterManager = new Курсач._24_04_GroupStudentDataSetTableAdapters.TableAdapterManager();
+            this.studentsTableAdapter = new Курсач._24_04_GroupStudentDataSetTableAdapters.StudentsTableAdapter();
+            this.studentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.имяDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.годDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.рейтингDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.телефонDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.студентBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.студентBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.учебная_группаBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._24_04_GroupStudentDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -135,7 +146,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(465, 60);
+            this.button1.Location = new System.Drawing.Point(617, 60);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(67, 40);
             this.button1.TabIndex = 2;
@@ -146,7 +157,7 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(465, 106);
+            this.button2.Location = new System.Drawing.Point(617, 106);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(67, 40);
             this.button2.TabIndex = 2;
@@ -157,7 +168,7 @@
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(465, 296);
+            this.button3.Location = new System.Drawing.Point(617, 296);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(67, 33);
             this.button3.TabIndex = 2;
@@ -187,14 +198,14 @@
             "Юридический факультет"});
             this.comboBox1.Location = new System.Drawing.Point(94, 152);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(353, 21);
+            this.comboBox1.Size = new System.Drawing.Size(505, 21);
             this.comboBox1.TabIndex = 3;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(465, 152);
+            this.button4.Location = new System.Drawing.Point(617, 152);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(67, 42);
             this.button4.TabIndex = 2;
@@ -211,6 +222,66 @@
             this.label6.Size = new System.Drawing.Size(210, 26);
             this.label6.TabIndex = 4;
             this.label6.Text = "Добавление группы";
+            // 
+            // студентBindingSource
+            // 
+            this.студентBindingSource.DataSource = typeof(Курсач.Студент);
+            // 
+            // button5
+            // 
+            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button5.Location = new System.Drawing.Point(617, 200);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(67, 42);
+            this.button5.TabIndex = 2;
+            this.button5.Text = "Изменить студента";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button6.Location = new System.Drawing.Point(617, 248);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(67, 42);
+            this.button6.TabIndex = 2;
+            this.button6.Text = "Удалить студента";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // учебная_группаBindingSource
+            // 
+            this.учебная_группаBindingSource.DataSource = typeof(Курсач.Учебная_группа);
+            // 
+            // _24_04_GroupStudentDataSet
+            // 
+            this._24_04_GroupStudentDataSet.DataSetName = "_24_04_GroupStudentDataSet";
+            this._24_04_GroupStudentDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // groupsBindingSource
+            // 
+            this.groupsBindingSource.DataMember = "Groups";
+            this.groupsBindingSource.DataSource = this._24_04_GroupStudentDataSet;
+            // 
+            // groupsTableAdapter
+            // 
+            this.groupsTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.GroupsTableAdapter = this.groupsTableAdapter;
+            this.tableAdapterManager.StudentsTableAdapter = this.studentsTableAdapter;
+            this.tableAdapterManager.UpdateOrder = Курсач._24_04_GroupStudentDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // studentsTableAdapter
+            // 
+            this.studentsTableAdapter.ClearBeforeFill = true;
+            // 
+            // studentsBindingSource
+            // 
+            this.studentsBindingSource.DataMember = "GroupsStudents";
+            this.studentsBindingSource.DataSource = this.groupsBindingSource;
             // 
             // dataGridView1
             // 
@@ -229,34 +300,11 @@
             this.рейтингDataGridViewTextBoxColumn,
             this.телефонDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.студентBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(53, 192);
+            this.dataGridView1.Location = new System.Drawing.Point(46, 205);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(394, 123);
-            this.dataGridView1.TabIndex = 5;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // button5
-            // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(465, 200);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(67, 42);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "Изменить студента";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button6
-            // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.Location = new System.Drawing.Point(465, 248);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(67, 42);
-            this.button6.TabIndex = 2;
-            this.button6.Text = "Удалить студента";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.dataGridView1.Size = new System.Drawing.Size(507, 227);
+            this.dataGridView1.TabIndex = 6;
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -299,15 +347,11 @@
             this.телефонDataGridViewTextBoxColumn.Name = "телефонDataGridViewTextBoxColumn";
             this.телефонDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // студентBindingSource
-            // 
-            this.студентBindingSource.DataSource = typeof(Курсач.Студент);
-            // 
             // AddGroupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(560, 341);
+            this.ClientSize = new System.Drawing.Size(712, 532);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.comboBox1);
@@ -329,8 +373,12 @@
             this.Name = "AddGroupForm";
             this.Text = "AddGroupForm";
             this.Load += new System.EventHandler(this.AddGroupForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.студентBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.учебная_группаBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._24_04_GroupStudentDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -353,14 +401,21 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridView dataGridView1;
         public System.Windows.Forms.BindingSource студентBindingSource;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.BindingSource учебная_группаBindingSource;
+        private _24_04_GroupStudentDataSet _24_04_GroupStudentDataSet;
+        private System.Windows.Forms.BindingSource groupsBindingSource;
+        private _24_04_GroupStudentDataSetTableAdapters.GroupsTableAdapter groupsTableAdapter;
+        private _24_04_GroupStudentDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private _24_04_GroupStudentDataSetTableAdapters.StudentsTableAdapter studentsTableAdapter;
+        private System.Windows.Forms.BindingSource studentsBindingSource;
+        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn имяDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn годDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn рейтингDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn телефонDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
     }
 }

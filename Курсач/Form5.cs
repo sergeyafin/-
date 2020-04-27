@@ -25,7 +25,7 @@ namespace Курсач
 
         private void Form5_Load(object sender, EventArgs e)
         {
-            i = form1.dataGridView1.CurrentRow.Index;
+            i = form1.n;
             textBox1.Text = (Form1.lstG[i].Год).ToString();
             textBox2.Text = (Form1.lstG[i].Староста);
             textBox4.Text = (Form1.lstG[i].Почта);

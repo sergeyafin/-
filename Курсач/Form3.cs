@@ -36,7 +36,7 @@ namespace Курсач
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int год; 
+            int год;
             if (string.IsNullOrEmpty(textBox5.Text))
             {
                 MessageBox.Show("Не введено название группы");
@@ -51,7 +51,7 @@ namespace Курсач
                 return;
             }
 
-            if (!int.TryParse(textBox1.Text,out год))
+            if (!int.TryParse(textBox1.Text, out год))
             {
                 MessageBox.Show("Год должен быть задан числом");
                 textBox1.Focus();
@@ -71,7 +71,7 @@ namespace Курсач
                 textBox4.Focus();
                 return;
             }
-            Form1.lstG.Add(new Учебная_группа(textBox5.Text, год, comboBox1.Text, textBox2.Text, textBox4.Text,lst));
+            Form1.lstG.Add(new Учебная_группа(textBox5.Text, год, comboBox1.Text, textBox2.Text, textBox4.Text, lst));
             add = true;
             MessageBox.Show("Группа добавлена");
             form1.учебнаягруппаBindingSource.ResetBindings(false);
@@ -80,7 +80,7 @@ namespace Курсач
 
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -101,7 +101,7 @@ namespace Курсач
 
         private void button3_Click(object sender, EventArgs e)
         {
-             if (add)
+            if (add)
             {
                 form1.учебнаягруппаBindingSource.ResetBindings(false);
             }
@@ -111,7 +111,7 @@ namespace Курсач
         private void button4_Click(object sender, EventArgs e)
         {
             AddStudentForm formS = new AddStudentForm();
-            
+
             formS.AddGroupForm = this;
             formS.ShowDialog();
         }

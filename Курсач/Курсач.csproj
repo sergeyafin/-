@@ -84,6 +84,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="_24_04_GroupStudentDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_24_04_GroupStudentDataSet.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,9 +127,25 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="_24_04_GroupStudentDataSet.xsc">
+      <DependentUpon>_24_04_GroupStudentDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="_24_04_GroupStudentDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_24_04_GroupStudentDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_24_04_GroupStudentDataSet.xss">
+      <DependentUpon>_24_04_GroupStudentDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="24.04 GroupStudent.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

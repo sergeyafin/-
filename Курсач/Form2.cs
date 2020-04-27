@@ -32,7 +32,7 @@ namespace Курсач
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            rowAdd = dataGridView1.RowCount;
+            rowAdd = студентDataGridView.RowCount;
             студентBindingSource.DataSource = lst;
             radioButton3.Checked = Properties.Settings.Default.rb1;
             radioButton2.Checked = Properties.Settings.Default.rb2;
@@ -42,15 +42,15 @@ namespace Курсач
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
             Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentRow == null)
+            if (студентDataGridView.CurrentRow == null)
                 return;
-            n = dataGridView1.CurrentRow.Index;
+            n = студентDataGridView.CurrentRow.Index;
             EditStudentForm formS = new EditStudentForm();
 
             formS.Form2 = this;
@@ -67,16 +67,16 @@ namespace Курсач
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentCell == null)
+            if (студентDataGridView.CurrentCell == null)
                 return;
-            if (dataGridView1.SelectedRows.Count > 1)
+            if (студентDataGridView.SelectedRows.Count > 1)
             {
                 if (MessageBox.Show(
                     "Вы действительно хотите удалить несколько студентов?", "Внимание",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     List<Студент> listDel = new List<Студент>();
-                    foreach (DataGridViewRow item in dataGridView1.SelectedRows)
+                    foreach (DataGridViewRow item in студентDataGridView.SelectedRows)
                         listDel.Add(lst[item.Index]);
                     foreach (Студент item in listDel)
                         lst.Remove(item);
@@ -87,12 +87,12 @@ namespace Курсач
                 else
                     return;
             }
-            string stname = (string)dataGridView1.CurrentRow.Cells["имя"].Value;
+            string stname = (string)студентDataGridView.CurrentRow.Cells["имя"].Value;
             if (MessageBox.Show(
                     "Вы действительно хотите удалить студента " + stname + " ?", "Внимание",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 return;
-            lst.RemoveAt(dataGridView1.CurrentRow.Index);
+            lst.RemoveAt(студентDataGridView.CurrentRow.Index);
             студентBindingSource.ResetBindings(false);
             Filter();
         }
@@ -100,7 +100,7 @@ namespace Курсач
         private void button6_Click(object sender, EventArgs e)
         {
             Filter();
-           
+
         }
         public void Filter()
         {
@@ -112,13 +112,13 @@ namespace Курсач
                     return;
                 }
 
-            dataGridView1.CurrentCell = null;
-            for (int i = 0; i < dataGridView1.Rows.Count - rowAdd; i++)
+            студентDataGridView.CurrentCell = null;
+            for (int i = 0; i < студентDataGridView.Rows.Count - rowAdd; i++)
             {
                 if (TestRow(i))
-                    dataGridView1.Rows[i].Visible = true;
+                    студентDataGridView.Rows[i].Visible = true;
                 else
-                    dataGridView1.Rows[i].Visible = false;
+                    студентDataGridView.Rows[i].Visible = false;
             }
         }
         private bool TestRow(int i)
@@ -148,8 +148,8 @@ namespace Курсач
 
         private void button8_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                dataGridView1.Rows[i].Visible = true;
+            for (int i = 0; i < студентDataGridView.Rows.Count; i++)
+                студентDataGridView.Rows[i].Visible = true;
         }
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
@@ -162,18 +162,18 @@ namespace Курсач
 
         private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (dataGridView1.Rows.Count > rowAdd)
+            if (студентDataGridView.Rows.Count > rowAdd)
             {
                 //если нажали на столбец не в первый раз подряд, нужно стереть добавление стрелочки в прошлый раз
                 if (current_column == e.ColumnIndex)
-                    dataGridView1.Columns[e.ColumnIndex].HeaderText = dataGridView1.Columns[e.ColumnIndex].HeaderText.Substring(0, dataGridView1.Columns[e.ColumnIndex].HeaderText.Length - 1);
+                    студентDataGridView.Columns[e.ColumnIndex].HeaderText = студентDataGridView.Columns[e.ColumnIndex].HeaderText.Substring(0, студентDataGridView.Columns[e.ColumnIndex].HeaderText.Length - 1);
                 //если нажали на другой столбец или нажали в первый раз
                 if (current_column != e.ColumnIndex)
                 {
                     sort_order = -1;
                     //если нажали на другой столбец, надо стереть изменения в предыдущем столбце
                     if (!first_sort)
-                        dataGridView1.Columns[current_column].HeaderText = dataGridView1.Columns[current_column].HeaderText.Substring(0, dataGridView1.Columns[current_column].HeaderText.Length - 1);
+                        студентDataGridView.Columns[current_column].HeaderText = студентDataGridView.Columns[current_column].HeaderText.Substring(0, студентDataGridView.Columns[current_column].HeaderText.Length - 1);
                     //если нажали в первый раз, стирать ничего не надо
                     else
                         first_sort = false;
@@ -187,11 +187,11 @@ namespace Курсач
                 //sort_order = 1 - по возрастанию
 
                 if (sort_order == 1)
-                    dataGridView1.Columns[e.ColumnIndex].HeaderText = dataGridView1.Columns[e.ColumnIndex].HeaderText + "↓";
+                    студентDataGridView.Columns[e.ColumnIndex].HeaderText = студентDataGridView.Columns[e.ColumnIndex].HeaderText + "↓";
                 if (sort_order == -1)
-                    dataGridView1.Columns[e.ColumnIndex].HeaderText = dataGridView1.Columns[e.ColumnIndex].HeaderText + "↑";
+                    студентDataGridView.Columns[e.ColumnIndex].HeaderText = студентDataGridView.Columns[e.ColumnIndex].HeaderText + "↑";
 
-                switch (dataGridView1.Columns[e.ColumnIndex].Name)
+                switch (студентDataGridView.Columns[e.ColumnIndex].Name)
                 {
                     case "имя":
                         lst.Sort(delegate (Студент a1, Студент a2)
@@ -211,7 +211,7 @@ namespace Курсач
                             return sort_order * a1.Рейтинг.CompareTo(a2.Рейтинг);
                         });
                         break;
-                    
+
                     case "телефон":
                         lst.Sort(delegate (Студент a1, Студент a2)
                         {
@@ -225,7 +225,7 @@ namespace Курсач
                 студентBindingSource.ResetBindings(false);
                 Filter();
 
-                
+
             }
         }
     }

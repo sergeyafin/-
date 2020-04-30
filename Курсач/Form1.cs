@@ -25,11 +25,12 @@ namespace Курсач
         public List<Студент> lst = new List<Студент>();
         private void Form1_Load(object sender, EventArgs e)
         {
+            rowAdd = dataGridView1.RowCount;
             // TODO: данная строка кода позволяет загрузить данные в таблицу "GroupDataSet.Students". При необходимости она может быть перемещена или удалена.
             this.studentsTableAdapter.Fill(this.GroupDataSet.Students);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "_24_04_GroupStudentDataSet.Groups". При необходимости она может быть перемещена или удалена.
             this.groupsTableAdapter.Fill(this.GroupDataSet.Groups);
-            rowAdd = dataGridView1.RowCount;
+            
             
             foreach (DataRow rg in GroupDataSet.Groups.Rows)
             { 
@@ -39,8 +40,6 @@ namespace Курсач
                 {
                     if ((int)rs["Group_ID"] == (int)rg["Group_ID"])
                     {
-                        label6.Text = rs["St_Year"].ToString();
-                        rowAdd = Convert.ToInt32(rs["St_Rating"]);
                         Студент ст = new Студент(rs["St_Name"].ToString(), Convert.ToInt32(rs["St_Year"]), Convert.ToInt32(rs["St_Rating"]), rs["St_Phone_Number"].ToString());
                         lst.Add(ст);
                     }
@@ -84,7 +83,7 @@ namespace Курсач
                 return;
             int n = dataGridView1.CurrentRow.Index;
             EditGroupForm formS = new EditGroupForm();
-                        
+            formS.lst = lstG[n].Студенты;
             formS.form1 = this;
             formS.ShowDialog();
             groupsBindingSource.ResetCurrentItem();
@@ -102,12 +101,17 @@ namespace Курсач
                     "Вы действительно хотите удалить несколько групп?", "Внимание",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    List<Учебная_группа> listDel = new List<Учебная_группа>();
 
                     foreach (DataGridViewRow r in dataGridView1.SelectedRows)
                     {
                         id = (int)r.Cells["groupid"].Value;
+                        listDel.Add(lstG[r.Index]);
                         GroupDataSet.Groups.FindByGroup_ID(id).Delete();
+
                     }
+                    foreach (Учебная_группа item in listDel)
+                        lstG.Remove(item);
                     GroupDataSet.Students.AcceptChanges();
                     groupsBindingSource.ResetBindings(false);
                     Filter();
@@ -121,6 +125,7 @@ namespace Курсач
                     "Вы действительно хотите удалить группу ?", "Внимание",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 return;
+            lstG.RemoveAt(dataGridView1.CurrentRow.Index);
             GroupDataSet.Groups.FindByGroup_ID(id).Delete();
             GroupDataSet.Students.AcceptChanges();
             groupsBindingSource.ResetBindings(false);
@@ -143,26 +148,23 @@ namespace Курсач
             dataGridView1.CurrentCell = null;
             for (int i = 0; i < dataGridView1.Rows.Count - rowAdd; i++)
             {
-                int id = (int)dataGridView1["groupid", i].Value;
-                if (TestRow(id))
+                if (TestRow(i))
                     dataGridView1.Rows[i].Visible = true;
                 else
                     dataGridView1.Rows[i].Visible = false;
             }
         }
-        private bool TestRow(int id)
+        private bool TestRow(int i)
         {
-            DataRow r = GroupDataSet.Groups.FindByGroup_ID(id);
+            if (textBox1.Text != "" && lstG[i].Название.ToUpper().StartsWith(textBox1.Text.ToUpper()) == false) return false;
 
-            if (textBox1.Text != "" && r["groupname"].ToString().ToUpper().StartsWith(textBox1.Text.ToUpper())==false) return false;
+            if (textBox2.Text != "" && lstG[i].Год.ToString().ToUpper().StartsWith(textBox2.Text.ToUpper()) == false) return false;
 
-            if (textBox2.Text != "" && r["groupyear"].ToString().ToUpper().StartsWith(textBox2.Text.ToUpper()) == false) return false;
+            if (textBox3.Text != "" && lstG[i].Староста.ToUpper().StartsWith(textBox3.Text.ToUpper()) == false) return false;
 
-            if (textBox3.Text != "" && r["groupstarosta"].ToString().ToUpper().StartsWith(textBox3.Text.ToUpper()) == false) return false;
+            if (textBox4.Text != "" && lstG[i].Почта.ToUpper().StartsWith(textBox4.Text.ToUpper()) == false) return false;
 
-            if (textBox4.Text != "" && r["groupmail"].ToString().ToUpper().StartsWith(textBox4.Text.ToUpper()) == false) return false;
-
-            if (comboBox2.Text != "" && r["groupfaculty"].ToString().ToUpper().StartsWith(comboBox2.Text.ToUpper()) == false) return false;
+            if (comboBox2.Text != "" && lstG[i].Факультет.ToUpper().StartsWith(comboBox2.Text.ToUpper()) == false) return false;
 
             return true;
         }
@@ -188,7 +190,7 @@ namespace Курсач
             {
                 //если нажали на столбец не в первый раз подряд, нужно стереть добавление стрелочки в прошлый раз
                 if (current_column == e.ColumnIndex)
-                    dataGridView1.Columns[e.ColumnIndex].HeaderText = dataGridView1.Columns[e.ColumnIndex].HeaderText.Substring(0, dataGridView1.Columns[e.ColumnIndex].HeaderText.Length-1);
+                    dataGridView1.Columns[e.ColumnIndex].HeaderText = dataGridView1.Columns[e.ColumnIndex].HeaderText.Substring(0, dataGridView1.Columns[e.ColumnIndex].HeaderText.Length - 1);
                 //если нажали на другой столбец или нажали в первый раз
                 if (current_column != e.ColumnIndex)
                 {
@@ -212,29 +214,55 @@ namespace Курсач
                     dataGridView1.Columns[e.ColumnIndex].HeaderText = dataGridView1.Columns[e.ColumnIndex].HeaderText + "↓";
                 if (sort_order == -1)
                     dataGridView1.Columns[e.ColumnIndex].HeaderText = dataGridView1.Columns[e.ColumnIndex].HeaderText + "↑";
-                 
+
                 switch (dataGridView1.Columns[e.ColumnIndex].Name)
                 {
-                    case "groupname":
-                        GroupDataSet.Groups.DefaultView.Sort = "groupname";
+                    case "название":
+                        lstG.Sort(delegate (Учебная_группа a1, Учебная_группа a2)
+                        {
+                            return sort_order * a1.Название.CompareTo(a2.Название);
+                        });
+                        groupsBindingSource.ResetBindings(false);
+                        Filter();
                         break;
-                    case "groupyear":
-                        GroupDataSet.Groups.DefaultView.Sort = "groupyear";
+                    case "год":
+                        lstG.Sort(delegate (Учебная_группа a1, Учебная_группа a2)
+                        {
+                            return sort_order * a1.Год.CompareTo(a2.Год);
+                        });
+                        groupsBindingSource.ResetBindings(false);
+                        Filter();
                         break;
-                    case "groupfaculty":
-                        GroupDataSet.Groups.DefaultView.Sort = "groupfaculty";
+                    case "факультет":
+                        lstG.Sort(delegate (Учебная_группа a1, Учебная_группа a2)
+                        {
+                            return sort_order * a1.Факультет.CompareTo(a2.Факультет);
+                        });
+                        groupsBindingSource.ResetBindings(false);
+                        Filter();
                         break;
-                    case "groupstarosta":
-                        GroupDataSet.Groups.DefaultView.Sort = "groupstarosta";
+                    case "староста":
+                        lstG.Sort(delegate (Учебная_группа a1, Учебная_группа a2)
+                        {
+                            return sort_order * a1.Староста.CompareTo(a2.Староста);
+                        });
+                        groupsBindingSource.ResetBindings(false);
+                        Filter();
                         break;
-                    case "groupmail":
-                        GroupDataSet.Groups.DefaultView.Sort = "groupmail";
+                    case "почта":
+                        lstG.Sort(delegate (Учебная_группа a1, Учебная_группа a2)
+                        {
+                            return sort_order * a1.Почта.CompareTo(a2.Почта);
+                        });
+                        groupsBindingSource.ResetBindings(false);
+                        Filter();
                         break;
                     default:
+                        groupsBindingSource.ResetBindings(false);
+                        Filter();
                         return;
 
                 }
-
                 groupsBindingSource.ResetBindings(false);
                 Filter();
 
@@ -242,6 +270,11 @@ namespace Курсач
         }
 
         private void учебнаягруппаBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

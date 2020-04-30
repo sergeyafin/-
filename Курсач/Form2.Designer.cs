@@ -55,22 +55,24 @@
             this.studentsTableAdapter = new Курсач._24_04_GroupStudentDataSetTableAdapters.StudentsTableAdapter();
             this.tableAdapterManager = new Курсач._24_04_GroupStudentDataSetTableAdapters.TableAdapterManager();
             this.студентDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.имя = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.год = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.рейтинг = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.телефон = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.студентBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.студентBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._24_04_GroupStudentDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.студентDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.студентBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.студентBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(581, 244);
+            this.button1.Location = new System.Drawing.Point(632, 244);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(70, 41);
             this.button1.TabIndex = 1;
@@ -81,7 +83,7 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(581, 138);
+            this.button2.Location = new System.Drawing.Point(632, 138);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(70, 47);
             this.button2.TabIndex = 2;
@@ -92,7 +94,7 @@
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(581, 85);
+            this.button3.Location = new System.Drawing.Point(632, 85);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(70, 47);
             this.button3.TabIndex = 2;
@@ -103,7 +105,7 @@
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(581, 191);
+            this.button4.Location = new System.Drawing.Point(632, 191);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(70, 47);
             this.button4.TabIndex = 2;
@@ -324,59 +326,76 @@
             // 
             // студентDataGridView
             // 
+            this.студентDataGridView.AllowUserToAddRows = false;
+            this.студентDataGridView.AllowUserToDeleteRows = false;
+            this.студентDataGridView.AllowUserToOrderColumns = true;
+            this.студентDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.студентDataGridView.AutoGenerateColumns = false;
+            this.студентDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.студентDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.студентDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
             this.имя,
+            this.год,
+            this.рейтинг,
+            this.телефон,
             this.dataGridViewTextBoxColumn5});
             this.студентDataGridView.DataSource = this.студентBindingSource;
             this.студентDataGridView.Location = new System.Drawing.Point(42, 65);
             this.студентDataGridView.Name = "студентDataGridView";
-            this.студентDataGridView.Size = new System.Drawing.Size(495, 220);
+            this.студентDataGridView.Size = new System.Drawing.Size(546, 220);
             this.студентDataGridView.TabIndex = 11;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Год";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Год";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Рейтинг";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Рейтинг";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Телефон";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Телефон";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.студентDataGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_ColumnHeaderMouseClick);
             // 
             // имя
             // 
             this.имя.DataPropertyName = "Имя";
             this.имя.HeaderText = "Имя";
             this.имя.Name = "имя";
+            this.имя.Width = 54;
+            // 
+            // год
+            // 
+            this.год.DataPropertyName = "Год";
+            this.год.HeaderText = "Год";
+            this.год.Name = "год";
+            this.год.Width = 50;
+            // 
+            // рейтинг
+            // 
+            this.рейтинг.DataPropertyName = "Рейтинг";
+            this.рейтинг.HeaderText = "Рейтинг";
+            this.рейтинг.Name = "рейтинг";
+            this.рейтинг.Width = 73;
+            // 
+            // телефон
+            // 
+            this.телефон.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.телефон.DataPropertyName = "Телефон";
+            this.телефон.HeaderText = "Телефон";
+            this.телефон.Name = "телефон";
             // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "ID";
             this.dataGridViewTextBoxColumn5.HeaderText = "ID";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Visible = false;
+            this.dataGridViewTextBoxColumn5.Width = 43;
             // 
             // студентBindingSource
             // 
             this.студентBindingSource.DataSource = typeof(Курсач.Студент);
             // 
+            // студентBindingSource1
+            // 
+            this.студентBindingSource1.DataSource = typeof(Курсач.Студент);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(663, 463);
+            this.ClientSize = new System.Drawing.Size(714, 463);
             this.Controls.Add(this.студентDataGridView);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label6);
@@ -393,6 +412,7 @@
             ((System.ComponentModel.ISupportInitialize)(this._24_04_GroupStudentDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.студентDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.студентBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.студентBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -426,10 +446,11 @@
         private _24_04_GroupStudentDataSetTableAdapters.StudentsTableAdapter studentsTableAdapter;
         private _24_04_GroupStudentDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.DataGridView студентDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.BindingSource студентBindingSource1;
         private System.Windows.Forms.DataGridViewTextBoxColumn имя;
+        private System.Windows.Forms.DataGridViewTextBoxColumn год;
+        private System.Windows.Forms.DataGridViewTextBoxColumn рейтинг;
+        private System.Windows.Forms.DataGridViewTextBoxColumn телефон;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
     }
 }

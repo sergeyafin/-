@@ -22,7 +22,7 @@ namespace Курсач
         int sort_order=-1;
         bool first_sort = true;
         int current_column=50;
-        public List<Студент> lst = new List<Студент>();
+        
         private void Form1_Load(object sender, EventArgs e)
         {
             rowAdd = dataGridView1.RowCount;
@@ -33,21 +33,24 @@ namespace Курсач
             
             
             foreach (DataRow rg in GroupDataSet.Groups.Rows)
-            { 
+            {
+                List<Студент> lst = new List<Студент>();
                 
-                lst.Clear();
                 foreach (DataRow rs in GroupDataSet.Students.Rows)
                 {
+                    
                     if ((int)rs["Group_ID"] == (int)rg["Group_ID"])
                     {
-                        Студент ст = new Студент(rs["St_Name"].ToString(), Convert.ToInt32(rs["St_Year"]), Convert.ToInt32(rs["St_Rating"]), rs["St_Phone_Number"].ToString());
-                        lst.Add(ст);
+                        lst.Add(new Студент(rs["St_Name"].ToString(), Convert.ToInt32(rs["St_Year"]), Convert.ToInt32(rs["St_Rating"]), rs["St_Phone_Number"].ToString()));
+                        
                     }
+                    
+                    
                 }
                 lstG.Add(new Учебная_группа(rg["Gr_Name"].ToString(), (int)rg["Gr_Year"], rg["Gr_Faculty"].ToString(), rg["Gr_Starosta"].ToString(), rg["Gr_mail"].ToString(), lst));
-                           
+                          
             }
-                
+            учебнаягруппаBindingSource.DataSource = lstG;
 
             //ExtendDGV extendDGV=new ExtendDGV()
         }
@@ -56,14 +59,14 @@ namespace Курсач
         {
             if (dataGridView1.CurrentRow == null)
                 return;
-            int n = dataGridView1.CurrentRow.Index;
+            n = dataGridView1.CurrentRow.Index;
 
             Form2 formS = new Form2();
             formS.lst = lstG[n].Студенты;
 
 
             formS.ShowDialog();
-            groupsBindingSource.ResetCurrentItem();
+            учебнаягруппаBindingSource.ResetCurrentItem();
             Filter();
               
         }
@@ -81,12 +84,12 @@ namespace Курсач
         {
             if (dataGridView1.CurrentRow == null)
                 return;
-            int n = dataGridView1.CurrentRow.Index;
+            n = dataGridView1.CurrentRow.Index;
             EditGroupForm formS = new EditGroupForm();
             formS.lst = lstG[n].Студенты;
             formS.form1 = this;
             formS.ShowDialog();
-            groupsBindingSource.ResetCurrentItem();
+            учебнаягруппаBindingSource.ResetCurrentItem();
             Filter();
         }
 
@@ -113,7 +116,7 @@ namespace Курсач
                     foreach (Учебная_группа item in listDel)
                         lstG.Remove(item);
                     GroupDataSet.Students.AcceptChanges();
-                    groupsBindingSource.ResetBindings(false);
+                    учебнаягруппаBindingSource.ResetBindings(false);
                     Filter();
                     return;
                 }
@@ -128,7 +131,7 @@ namespace Курсач
             lstG.RemoveAt(dataGridView1.CurrentRow.Index);
             GroupDataSet.Groups.FindByGroup_ID(id).Delete();
             GroupDataSet.Students.AcceptChanges();
-            groupsBindingSource.ResetBindings(false);
+            учебнаягруппаBindingSource.ResetBindings(false);
             Filter();
         }
 
@@ -152,6 +155,7 @@ namespace Курсач
                     dataGridView1.Rows[i].Visible = true;
                 else
                     dataGridView1.Rows[i].Visible = false;
+                
             }
         }
         private bool TestRow(int i)
@@ -222,23 +226,20 @@ namespace Курсач
                         {
                             return sort_order * a1.Название.CompareTo(a2.Название);
                         });
-                        groupsBindingSource.ResetBindings(false);
-                        Filter();
                         break;
                     case "год":
                         lstG.Sort(delegate (Учебная_группа a1, Учебная_группа a2)
                         {
                             return sort_order * a1.Год.CompareTo(a2.Год);
                         });
-                        groupsBindingSource.ResetBindings(false);
-                        Filter();
+                        
                         break;
                     case "факультет":
-                        lstG.Sort(delegate (Учебная_группа a1, Учебная_группа a2)
-                        {
-                            return sort_order * a1.Факультет.CompareTo(a2.Факультет);
-                        });
-                        groupsBindingSource.ResetBindings(false);
+                        if (sort_order == 1)
+                            lstG = lstG.OrderBy(Учебная_группа => Учебная_группа.Факультет).ToList();
+                        if (sort_order == -1)
+                            lstG = lstG.OrderByDescending(Учебная_группа => Учебная_группа.Факультет).ToList();
+                        учебнаягруппаBindingSource.DataSource = lstG;
                         Filter();
                         break;
                     case "староста":
@@ -246,38 +247,27 @@ namespace Курсач
                         {
                             return sort_order * a1.Староста.CompareTo(a2.Староста);
                         });
-                        groupsBindingSource.ResetBindings(false);
-                        Filter();
+                        
                         break;
                     case "почта":
-                        lstG.Sort(delegate (Учебная_группа a1, Учебная_группа a2)
-                        {
-                            return sort_order * a1.Почта.CompareTo(a2.Почта);
-                        });
-                        groupsBindingSource.ResetBindings(false);
+                        if (sort_order==1)
+                            lstG = lstG.OrderBy(Учебная_группа => Учебная_группа.Почта).ToList();
+                        if (sort_order == -1)
+                            lstG = lstG.OrderByDescending(Учебная_группа => Учебная_группа.Почта).ToList();
+                        учебнаягруппаBindingSource.DataSource = lstG;
                         Filter();
                         break;
                     default:
-                        groupsBindingSource.ResetBindings(false);
                         Filter();
                         return;
-
+                        
                 }
-                groupsBindingSource.ResetBindings(false);
                 Filter();
 
             }
         }
 
-        private void учебнаягруппаBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        
     }
     public class Учебная_группа
     {

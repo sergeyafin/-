@@ -55,25 +55,27 @@
             this.groupsTableAdapter = new Курсач._24_04_GroupStudentDataSetTableAdapters.GroupsTableAdapter();
             this.tableAdapterManager = new Курсач._24_04_GroupStudentDataSetTableAdapters.TableAdapterManager();
             this.studentsTableAdapter = new Курсач._24_04_GroupStudentDataSetTableAdapters.StudentsTableAdapter();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.groupid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupyear = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupfaculty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupstarosta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.studentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.название = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.год = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.факультет = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.староста = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.почта = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.учебнаягруппаBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GroupDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.учебнаягруппаBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(675, 150);
+            this.button3.Location = new System.Drawing.Point(673, 150);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(69, 46);
             this.button3.TabIndex = 2;
@@ -84,7 +86,7 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(675, 203);
+            this.button2.Location = new System.Drawing.Point(673, 203);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(69, 46);
             this.button2.TabIndex = 3;
@@ -95,7 +97,7 @@
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(675, 46);
+            this.button4.Location = new System.Drawing.Point(673, 46);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(69, 46);
             this.button4.TabIndex = 4;
@@ -106,7 +108,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(675, 98);
+            this.button1.Location = new System.Drawing.Point(673, 98);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(69, 46);
             this.button1.TabIndex = 5;
@@ -117,7 +119,7 @@
             // button5
             // 
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(675, 255);
+            this.button5.Location = new System.Drawing.Point(673, 255);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(69, 46);
             this.button5.TabIndex = 3;
@@ -155,7 +157,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(592, 130);
             this.panel1.TabIndex = 10;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // comboBox2
             // 
@@ -323,81 +324,94 @@
             // 
             this.studentsTableAdapter.ClearBeforeFill = true;
             // 
+            // studentsBindingSource
+            // 
+            this.studentsBindingSource.DataMember = "GroupsStudents";
+            this.studentsBindingSource.DataSource = this.groupsBindingSource;
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.groupid,
-            this.groupname,
-            this.groupyear,
-            this.groupfaculty,
-            this.groupstarosta,
-            this.groupmail});
-            this.dataGridView1.DataSource = this.groupsBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(55, 46);
+            this.название,
+            this.год,
+            this.факультет,
+            this.староста,
+            this.почта,
+            this.groupid});
+            this.dataGridView1.DataSource = this.учебнаягруппаBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(55, 69);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(592, 255);
-            this.dataGridView1.TabIndex = 10;
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(590, 232);
+            this.dataGridView1.TabIndex = 11;
+            this.dataGridView1.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_ColumnHeaderMouseClick);
+            // 
+            // название
+            // 
+            this.название.DataPropertyName = "Название";
+            this.название.HeaderText = "Название";
+            this.название.Name = "название";
+            this.название.ReadOnly = true;
+            this.название.Width = 82;
+            // 
+            // год
+            // 
+            this.год.DataPropertyName = "Год";
+            this.год.HeaderText = "Год";
+            this.год.Name = "год";
+            this.год.ReadOnly = true;
+            this.год.Width = 50;
+            // 
+            // факультет
+            // 
+            this.факультет.DataPropertyName = "Факультет";
+            this.факультет.HeaderText = "Факультет";
+            this.факультет.Name = "факультет";
+            this.факультет.ReadOnly = true;
+            this.факультет.Width = 88;
+            // 
+            // староста
+            // 
+            this.староста.DataPropertyName = "Староста";
+            this.староста.HeaderText = "Староста";
+            this.староста.Name = "староста";
+            this.староста.ReadOnly = true;
+            this.староста.Width = 79;
+            // 
+            // почта
+            // 
+            this.почта.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.почта.DataPropertyName = "Почта";
+            this.почта.HeaderText = "Почта";
+            this.почта.Name = "почта";
+            this.почта.ReadOnly = true;
             // 
             // groupid
             // 
-            this.groupid.DataPropertyName = "Group_ID";
+            this.groupid.DataPropertyName = "ID";
             this.groupid.HeaderText = "ID";
             this.groupid.Name = "groupid";
+            this.groupid.ReadOnly = true;
             this.groupid.Visible = false;
             this.groupid.Width = 43;
             // 
-            // groupname
+            // учебнаягруппаBindingSource
             // 
-            this.groupname.DataPropertyName = "Gr_Name";
-            this.groupname.HeaderText = "Название";
-            this.groupname.Name = "groupname";
-            this.groupname.Width = 82;
-            // 
-            // groupyear
-            // 
-            this.groupyear.DataPropertyName = "Gr_Year";
-            this.groupyear.HeaderText = "Год";
-            this.groupyear.Name = "groupyear";
-            this.groupyear.Width = 50;
-            // 
-            // groupfaculty
-            // 
-            this.groupfaculty.DataPropertyName = "Gr_Faculty";
-            this.groupfaculty.HeaderText = "Факультет";
-            this.groupfaculty.Name = "groupfaculty";
-            this.groupfaculty.Width = 88;
-            // 
-            // groupstarosta
-            // 
-            this.groupstarosta.DataPropertyName = "Gr_Starosta";
-            this.groupstarosta.HeaderText = "Староста";
-            this.groupstarosta.Name = "groupstarosta";
-            this.groupstarosta.Width = 79;
-            // 
-            // groupmail
-            // 
-            this.groupmail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.groupmail.DataPropertyName = "Gr_mail";
-            this.groupmail.HeaderText = "Почта";
-            this.groupmail.Name = "groupmail";
-            // 
-            // studentsBindingSource
-            // 
-            this.studentsBindingSource.DataMember = "GroupsStudents";
-            this.studentsBindingSource.DataSource = this.groupsBindingSource;
+            this.учебнаягруппаBindingSource.DataSource = typeof(Курсач.Учебная_группа);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(765, 471);
+            this.ClientSize = new System.Drawing.Size(763, 471);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label6);
@@ -413,8 +427,9 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GroupDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.учебнаягруппаBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -445,16 +460,17 @@
         private _24_04_GroupStudentDataSet GroupDataSet;
         private _24_04_GroupStudentDataSetTableAdapters.GroupsTableAdapter groupsTableAdapter;
         private _24_04_GroupStudentDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private _24_04_GroupStudentDataSetTableAdapters.StudentsTableAdapter studentsTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn groupid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn groupname;
-        private System.Windows.Forms.DataGridViewTextBoxColumn groupyear;
-        private System.Windows.Forms.DataGridViewTextBoxColumn groupfaculty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn groupstarosta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn groupmail;
         public System.Windows.Forms.BindingSource groupsBindingSource;
         public System.Windows.Forms.BindingSource studentsBindingSource;
+        public System.Windows.Forms.BindingSource учебнаягруппаBindingSource;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn название;
+        private System.Windows.Forms.DataGridViewTextBoxColumn год;
+        private System.Windows.Forms.DataGridViewTextBoxColumn факультет;
+        private System.Windows.Forms.DataGridViewTextBoxColumn староста;
+        private System.Windows.Forms.DataGridViewTextBoxColumn почта;
+        private System.Windows.Forms.DataGridViewTextBoxColumn groupid;
     }
 }
 

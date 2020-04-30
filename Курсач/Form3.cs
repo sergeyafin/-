@@ -74,7 +74,7 @@ namespace Курсач
             Form1.lstG.Add(new Учебная_группа(textBox5.Text, год, comboBox1.Text, textBox2.Text, textBox4.Text, lst));
             add = true;
             MessageBox.Show("Группа добавлена");
-            form1.groupsBindingSource.ResetBindings(false);
+            form1.учебнаягруппаBindingSource.ResetBindings(false);
             form1.Filter();
         }
 
@@ -103,7 +103,7 @@ namespace Курсач
         {
             if (add)
             {
-                form1.groupsBindingSource.ResetBindings(false);
+                form1.учебнаягруппаBindingSource.ResetBindings(false);
             }
             Close();
         }

@@ -1,16 +1,16 @@
-C:\Users\serge\Downloads\cursach-master\Курсач\bin\Debug\24.04 GroupStudent.mdb
-C:\Users\serge\Downloads\cursach-master\Курсач\bin\Debug\тинг.exe.config
-C:\Users\serge\Downloads\cursach-master\Курсач\bin\Debug\тинг.exe
-C:\Users\serge\Downloads\cursach-master\Курсач\bin\Debug\тинг.pdb
-C:\Users\serge\Downloads\cursach-master\Курсач\obj\Debug\Курсач.csprojAssemblyReference.cache
-C:\Users\serge\Downloads\cursach-master\Курсач\obj\Debug\Курсач.Form1.resources
-C:\Users\serge\Downloads\cursach-master\Курсач\obj\Debug\Курсач.Form2.resources
-C:\Users\serge\Downloads\cursach-master\Курсач\obj\Debug\Курсач.AddGroupForm.resources
-C:\Users\serge\Downloads\cursach-master\Курсач\obj\Debug\Курсач.AddStudentForm.resources
-C:\Users\serge\Downloads\cursach-master\Курсач\obj\Debug\Курсач.EditGroupForm.resources
-C:\Users\serge\Downloads\cursach-master\Курсач\obj\Debug\Курсач.EditStudentForm.resources
-C:\Users\serge\Downloads\cursach-master\Курсач\obj\Debug\Курсач.Properties.Resources.resources
-C:\Users\serge\Downloads\cursach-master\Курсач\obj\Debug\Курсач.csproj.GenerateResource.cache
-C:\Users\serge\Downloads\cursach-master\Курсач\obj\Debug\Курсач.csproj.CoreCompileInputs.cache
-C:\Users\serge\Downloads\cursach-master\Курсач\obj\Debug\тинг.exe
-C:\Users\serge\Downloads\cursach-master\Курсач\obj\Debug\тинг.pdb
+C:\Users\serge\Downloads\для сдачи\cursach-f6669b533a552dc684d3f8f1384797e261606345\Курсач\bin\Debug\тинг.exe.config
+C:\Users\serge\Downloads\для сдачи\cursach-f6669b533a552dc684d3f8f1384797e261606345\Курсач\bin\Debug\тинг.exe
+C:\Users\serge\Downloads\для сдачи\cursach-f6669b533a552dc684d3f8f1384797e261606345\Курсач\bin\Debug\тинг.pdb
+C:\Users\serge\Downloads\для сдачи\cursach-f6669b533a552dc684d3f8f1384797e261606345\Курсач\obj\Debug\Курсач.csprojAssemblyReference.cache
+C:\Users\serge\Downloads\для сдачи\cursach-f6669b533a552dc684d3f8f1384797e261606345\Курсач\obj\Debug\Курсач.Form1.resources
+C:\Users\serge\Downloads\для сдачи\cursach-f6669b533a552dc684d3f8f1384797e261606345\Курсач\obj\Debug\Курсач.Form2.resources
+C:\Users\serge\Downloads\для сдачи\cursach-f6669b533a552dc684d3f8f1384797e261606345\Курсач\obj\Debug\Курсач.AddGroupForm.resources
+C:\Users\serge\Downloads\для сдачи\cursach-f6669b533a552dc684d3f8f1384797e261606345\Курсач\obj\Debug\Курсач.AddStudentForm.resources
+C:\Users\serge\Downloads\для сдачи\cursach-f6669b533a552dc684d3f8f1384797e261606345\Курсач\obj\Debug\Курсач.EditGroupForm.resources
+C:\Users\serge\Downloads\для сдачи\cursach-f6669b533a552dc684d3f8f1384797e261606345\Курсач\obj\Debug\Курсач.EditStudentForm.resources
+C:\Users\serge\Downloads\для сдачи\cursach-f6669b533a552dc684d3f8f1384797e261606345\Курсач\obj\Debug\Курсач.Properties.Resources.resources
+C:\Users\serge\Downloads\для сдачи\cursach-f6669b533a552dc684d3f8f1384797e261606345\Курсач\obj\Debug\Курсач.csproj.GenerateResource.cache
+C:\Users\serge\Downloads\для сдачи\cursach-f6669b533a552dc684d3f8f1384797e261606345\Курсач\obj\Debug\Курсач.csproj.CoreCompileInputs.cache
+C:\Users\serge\Downloads\для сдачи\cursach-f6669b533a552dc684d3f8f1384797e261606345\Курсач\obj\Debug\тинг.exe
+C:\Users\serge\Downloads\для сдачи\cursach-f6669b533a552dc684d3f8f1384797e261606345\Курсач\obj\Debug\тинг.pdb
+C:\Users\serge\Downloads\для сдачи\cursach-f6669b533a552dc684d3f8f1384797e261606345\Курсач\obj\Debug\Курсач.Stats.resources

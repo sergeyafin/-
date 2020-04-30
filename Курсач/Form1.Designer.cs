@@ -50,7 +50,7 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.GroupDataSet = new Курсач._24_04_GroupStudentDataSet();
+            this._24_04_GroupStudentDataSet = new Курсач._24_04_GroupStudentDataSet();
             this.groupsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupsTableAdapter = new Курсач._24_04_GroupStudentDataSetTableAdapters.GroupsTableAdapter();
             this.tableAdapterManager = new Курсач._24_04_GroupStudentDataSetTableAdapters.TableAdapterManager();
@@ -65,7 +65,7 @@
             this.groupid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.учебнаягруппаBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GroupDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._24_04_GroupStudentDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -299,15 +299,15 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Фильтрация";
             // 
-            // GroupDataSet
+            // _24_04_GroupStudentDataSet
             // 
-            this.GroupDataSet.DataSetName = "_24_04_GroupStudentDataSet";
-            this.GroupDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this._24_04_GroupStudentDataSet.DataSetName = "_24_04_GroupStudentDataSet";
+            this._24_04_GroupStudentDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // groupsBindingSource
             // 
             this.groupsBindingSource.DataMember = "Groups";
-            this.groupsBindingSource.DataSource = this.GroupDataSet;
+            this.groupsBindingSource.DataSource = this._24_04_GroupStudentDataSet;
             // 
             // groupsTableAdapter
             // 
@@ -425,7 +425,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GroupDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._24_04_GroupStudentDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -457,7 +457,6 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button button8;
-        private _24_04_GroupStudentDataSet GroupDataSet;
         private _24_04_GroupStudentDataSetTableAdapters.GroupsTableAdapter groupsTableAdapter;
         private _24_04_GroupStudentDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private _24_04_GroupStudentDataSetTableAdapters.StudentsTableAdapter studentsTableAdapter;
@@ -471,6 +470,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn староста;
         private System.Windows.Forms.DataGridViewTextBoxColumn почта;
         private System.Windows.Forms.DataGridViewTextBoxColumn groupid;
+        public _24_04_GroupStudentDataSet _24_04_GroupStudentDataSet;
     }
 }
 

@@ -29,10 +29,7 @@ namespace Курсач
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -73,7 +70,15 @@ namespace Курсач
             }
             Form1.lstG.Add(new Учебная_группа(textBox5.Text, год, comboBox1.Text, textBox2.Text, textBox4.Text, lst));
             add = true;
+            _24_04_GroupStudentDataSet.GroupsRow row =_24_04_GroupStudentDataSet.Groups.NewGroupsRow();
+            row.Gr_Name = textBox5.Text;
+            row.Gr_Year = int.Parse(textBox1.Text);
+            row.Gr_Faculty = comboBox1.Text;
+            row.Gr_mail = textBox4.Text;
+            row.Gr_Starosta = textBox2.Text;
+            _24_04_GroupStudentDataSet.Groups.Rows.Add(row);
             MessageBox.Show("Группа добавлена");
+            
             form1.учебнаягруппаBindingSource.ResetBindings(false);
             form1.Filter();
         }
@@ -103,6 +108,8 @@ namespace Курсач
         {
             if (add)
             {
+                groupsBindingSource.EndEdit();
+                tableAdapterManager.UpdateAll(_24_04_GroupStudentDataSet);
                 form1.учебнаягруппаBindingSource.ResetBindings(false);
             }
             Close();

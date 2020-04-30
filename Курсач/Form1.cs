@@ -27,16 +27,16 @@ namespace Курсач
         {
             rowAdd = dataGridView1.RowCount;
             // TODO: данная строка кода позволяет загрузить данные в таблицу "GroupDataSet.Students". При необходимости она может быть перемещена или удалена.
-            this.studentsTableAdapter.Fill(this.GroupDataSet.Students);
+            this.studentsTableAdapter.Fill(this._24_04_GroupStudentDataSet.Students);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "_24_04_GroupStudentDataSet.Groups". При необходимости она может быть перемещена или удалена.
-            this.groupsTableAdapter.Fill(this.GroupDataSet.Groups);
+            this.groupsTableAdapter.Fill(this._24_04_GroupStudentDataSet.Groups);
             
             
-            foreach (DataRow rg in GroupDataSet.Groups.Rows)
+            foreach (DataRow rg in _24_04_GroupStudentDataSet.Groups.Rows)
             {
                 List<Студент> lst = new List<Студент>();
                 
-                foreach (DataRow rs in GroupDataSet.Students.Rows)
+                foreach (DataRow rs in _24_04_GroupStudentDataSet.Students.Rows)
                 {
                     
                     if ((int)rs["Group_ID"] == (int)rg["Group_ID"])
@@ -110,12 +110,12 @@ namespace Курсач
                     {
                         id = (int)r.Cells["groupid"].Value;
                         listDel.Add(lstG[r.Index]);
-                        GroupDataSet.Groups.FindByGroup_ID(id).Delete();
+                        _24_04_GroupStudentDataSet.Groups.FindByGroup_ID(id).Delete();
 
                     }
                     foreach (Учебная_группа item in listDel)
                         lstG.Remove(item);
-                    GroupDataSet.Students.AcceptChanges();
+                    _24_04_GroupStudentDataSet.Students.AcceptChanges();
                     учебнаягруппаBindingSource.ResetBindings(false);
                     Filter();
                     return;
@@ -129,16 +129,18 @@ namespace Курсач
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 return;
             lstG.RemoveAt(dataGridView1.CurrentRow.Index);
-            GroupDataSet.Groups.FindByGroup_ID(id).Delete();
-            GroupDataSet.Students.AcceptChanges();
+            _24_04_GroupStudentDataSet.Groups.FindByGroup_ID(id).Delete();
+            _24_04_GroupStudentDataSet.Students.AcceptChanges();
             учебнаягруппаBindingSource.ResetBindings(false);
             Filter();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            this.groupsBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.GroupDataSet);
+            
+            groupsBindingSource.EndEdit();
+            studentsBindingSource.EndEdit();
+            tableAdapterManager.UpdateAll(_24_04_GroupStudentDataSet);
             Close();
         }
 

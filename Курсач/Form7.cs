@@ -18,7 +18,7 @@ namespace Курсач
             InitializeComponent();
         }
         private double dispersia(List<double> Y)
-        {
+        {//функция возвращает дисперсию
             double sum_kvadrat = 0;
             foreach (double i in Y)
                 sum_kvadrat=sum_kvadrat+i*i;
@@ -28,6 +28,7 @@ namespace Курсач
 
         private void Form7_Load(object sender, EventArgs e)
         {
+            //выводит среднее, дисперсию, максимальное и минимальное
             sred.Text = Y.Average().ToString();
             disp.Text = dispersia(Y).ToString();
             max.Text = Y.Max().ToString();
@@ -39,8 +40,10 @@ namespace Курсач
             var points = new List<PointF>();
             for (var i=0;i<Y.Count();i++)
                 points.Add(new PointF(i*10, (float)Y[i]));//задаем точки,i*10 - расстояние между точкам по оси X =10
+            
             var blackPen = new Pen(Color.Black, 3);//цвет и толщина в пикселях
-            e.Graphics.TranslateTransform(pictureBox1.Location.X, pictureBox1.Height);//перемещаем график в центр
+
+            e.Graphics.TranslateTransform(pictureBox1.Location.X, pictureBox1.Height);//перемещаем график
             e.Graphics.ScaleTransform(1, -1);//переворачиваем график
             e.Graphics.ScaleTransform(4,2);//увеличиваем размер
             //линия масштабируется вместе с остальным графиком,
@@ -58,7 +61,7 @@ namespace Курсач
             var grayPen = new Pen(Color.LightGray, 1);
             grayPen.Transform = penTransform;//матрица перехода как у черного пера
 
-            for (var x = 0; x <= 100; x=x+10) // рисуем сетку 10x10
+            for (var x = 0; x <= 100; x=x+10) // рисуем сетку 100x100
             {
                 var pen = x == 0 ? blackPen : grayPen; // чтобы центральные оси рисовались черным пером
                 e.Graphics.DrawLine(pen, x, 0, x, 100);
@@ -74,7 +77,7 @@ namespace Курсач
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
+        {//закрытие формы 
             Close();
         }
     }

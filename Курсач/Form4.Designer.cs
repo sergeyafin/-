@@ -83,8 +83,6 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(124, 20);
             this.textBox5.TabIndex = 9;
-            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
-            // 
             // textBox4
             // 
             this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -110,9 +108,7 @@
             this.textBox1.Location = new System.Drawing.Point(141, 81);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(124, 20);
-            this.textBox1.TabIndex = 12;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
+            this.textBox1.TabIndex = 12; 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -139,7 +135,6 @@
             this.label2.Size = new System.Drawing.Size(25, 13);
             this.label2.TabIndex = 7;
             this.label2.Text = "Год";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 

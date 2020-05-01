@@ -15,7 +15,6 @@ namespace Курсач
         public EditGroupForm EditGroupForm;
         public AddGroupForm AddGroupForm;
         public Form2 Form2;
-        bool add = false;
         bool f2 = false;
         bool egf = false;
         bool agf = false;
@@ -26,9 +25,9 @@ namespace Курсач
 
         private void EditStudentForm_Load(object sender, EventArgs e)
         {
-
+            //узнаем, из какой формы была открыта эта форма
             foreach (Form f in Application.OpenForms)
-            {
+            {//проверяем активированы ли Form2,AddGroupForm и EditGroupForm
                 if (f.Name == "Form2")
                     f2 = true;
                 if (f.Name == "EditGroupForm")
@@ -36,7 +35,7 @@ namespace Курсач
                 if (f.Name == "AddGroupForm")
                     agf = true;
             }
-            
+            //заполнение полей данными из родительской формы
             if (f2)
             {
                 textBox1.Text = Form2.lst[Form2.n].Имя;
@@ -61,9 +60,10 @@ namespace Курсач
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
+        {//изменение студента в списке из родительской формы
             int год;
             int рейтинг;
+            //проверяем правильность заполнения полей
             if (string.IsNullOrEmpty(textBox1.Text))
             {
                 MessageBox.Show("Не задано имя");
@@ -117,18 +117,11 @@ namespace Курсач
                 Close();
             }
 
-            add = true;
-            
+         }
 
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button2_Click(object sender, EventArgs e)
-        {
+        {//очищаем поля
             if (MessageBox.Show(
                    "Вы действительно хотите очистить все поля?", "Внимание",
                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -141,13 +134,10 @@ namespace Курсач
         }
 
         private void button3_Click(object sender, EventArgs e)
-        {
+        {//закрытие формы
             Close();
         }
 
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }

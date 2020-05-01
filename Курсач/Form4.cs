@@ -24,15 +24,11 @@ namespace Курсач
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
-        {
+        {//записывам студента в список из родительской формы
             int год;
             int рейтинг;
+            //проверяем правильность заполнения полей
             if (string.IsNullOrEmpty(textBox1.Text))
             {
                 MessageBox.Show("Не задано имя");
@@ -58,17 +54,18 @@ namespace Курсач
                 return;
             }
             if (agf)
-            {
+            {//если форма была открыта из AddGroupForm
                 AddGroupForm.lst.Add(new Студент(textBox1.Text, int.Parse(textBox2.Text), int.Parse(textBox5.Text), textBox4.Text));
                 add = true;
                 AddGroupForm.студентBindingSource.ResetBindings(false);
             }
             if (egf)
-            {EditGroupForm.lst.Add(new Студент(textBox1.Text, int.Parse(textBox2.Text), int.Parse(textBox5.Text), textBox4.Text));
+            {//если форма была открыта из EditGroupForm
+            EditGroupForm.lst.Add(new Студент(textBox1.Text, int.Parse(textBox2.Text), int.Parse(textBox5.Text), textBox4.Text));
             add = true;
             EditGroupForm.студентBindingSource.ResetBindings(false); }
             if (f2)
-            {
+            {//если форма была открыта из Form2
                 Form2.lst.Add(new Студент(textBox1.Text, int.Parse(textBox2.Text), int.Parse(textBox5.Text), textBox4.Text));
                 add = true;
                 Form2.студентBindingSource.ResetBindings(false);
@@ -78,9 +75,9 @@ namespace Курсач
         }
 
         private void AddStudentForm_Load(object sender, EventArgs e)
-        {
+        {//узнаем, из какой формы была открыта эта форма
             foreach (Form f in Application.OpenForms)
-            {
+            {//проверяем активированы ли Form2,AddGroupForm и EditGroupForm
                 if (f.Name == "AddGroupForm")
                     agf = true;
                 if (f.Name == "EditGroupForm")
@@ -91,7 +88,7 @@ namespace Курсач
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {
+        {//очищаем поля
             if (MessageBox.Show(
                          "Вы действительно хотите очистить все поля?", "Внимание",
                          MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -105,9 +102,10 @@ namespace Курсач
         }
 
         private void button3_Click(object sender, EventArgs e)
-        {
+        {//закрытие
             if (add)
             {
+                //обновляем отображение значений в bindingSource родительской формы
                 if (agf)
                     AddGroupForm.студентBindingSource.ResetBindings(false);
                 if (egf)
@@ -122,14 +120,6 @@ namespace Курсач
             Close();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }

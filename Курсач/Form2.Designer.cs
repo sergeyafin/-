@@ -30,6 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.имя = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.год = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.рейтинг = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.телефон = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.студентBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -52,16 +58,10 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.имя = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.год = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.рейтинг = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.телефон = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.студентBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button9 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.студентBindingSource)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -90,10 +90,55 @@
             this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_ColumnHeaderMouseClick);
             // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.iDDataGridViewTextBoxColumn.Visible = false;
+            this.iDDataGridViewTextBoxColumn.Width = 43;
+            // 
+            // имя
+            // 
+            this.имя.DataPropertyName = "Имя";
+            this.имя.HeaderText = "Имя";
+            this.имя.Name = "имя";
+            this.имя.ReadOnly = true;
+            this.имя.Width = 54;
+            // 
+            // год
+            // 
+            this.год.DataPropertyName = "Год";
+            this.год.HeaderText = "Год";
+            this.год.Name = "год";
+            this.год.ReadOnly = true;
+            this.год.Width = 50;
+            // 
+            // рейтинг
+            // 
+            this.рейтинг.DataPropertyName = "Рейтинг";
+            this.рейтинг.HeaderText = "Рейтинг";
+            this.рейтинг.Name = "рейтинг";
+            this.рейтинг.ReadOnly = true;
+            this.рейтинг.Width = 73;
+            // 
+            // телефон
+            // 
+            this.телефон.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.телефон.DataPropertyName = "Телефон";
+            this.телефон.HeaderText = "Телефон";
+            this.телефон.Name = "телефон";
+            this.телефон.ReadOnly = true;
+            // 
+            // студентBindingSource
+            // 
+            this.студентBindingSource.DataSource = typeof(Курсач.Студент);
+            // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(533, 214);
+            this.button1.Location = new System.Drawing.Point(533, 245);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(74, 41);
             this.button1.TabIndex = 1;
@@ -104,7 +149,7 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(533, 108);
+            this.button2.Location = new System.Drawing.Point(533, 139);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(74, 47);
             this.button2.TabIndex = 2;
@@ -115,7 +160,7 @@
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(533, 55);
+            this.button3.Location = new System.Drawing.Point(533, 86);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(74, 47);
             this.button3.TabIndex = 2;
@@ -126,7 +171,7 @@
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(533, 161);
+            this.button4.Location = new System.Drawing.Point(533, 192);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(74, 47);
             this.button4.TabIndex = 2;
@@ -146,6 +191,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button9);
             this.panel1.Controls.Add(this.radioButton3);
             this.panel1.Controls.Add(this.radioButton2);
             this.panel1.Controls.Add(this.radioButton1);
@@ -164,7 +210,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(22, 313);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(567, 130);
+            this.panel1.Size = new System.Drawing.Size(567, 166);
             this.panel1.TabIndex = 11;
             // 
             // radioButton3
@@ -329,56 +375,11 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Фильтрация";
             // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.iDDataGridViewTextBoxColumn.Visible = false;
-            this.iDDataGridViewTextBoxColumn.Width = 43;
-            // 
-            // имя
-            // 
-            this.имя.DataPropertyName = "Имя";
-            this.имя.HeaderText = "Имя";
-            this.имя.Name = "имя";
-            this.имя.ReadOnly = true;
-            this.имя.Width = 54;
-            // 
-            // год
-            // 
-            this.год.DataPropertyName = "Год";
-            this.год.HeaderText = "Год";
-            this.год.Name = "год";
-            this.год.ReadOnly = true;
-            this.год.Width = 50;
-            // 
-            // рейтинг
-            // 
-            this.рейтинг.DataPropertyName = "Рейтинг";
-            this.рейтинг.HeaderText = "Рейтинг";
-            this.рейтинг.Name = "рейтинг";
-            this.рейтинг.ReadOnly = true;
-            this.рейтинг.Width = 73;
-            // 
-            // телефон
-            // 
-            this.телефон.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.телефон.DataPropertyName = "Телефон";
-            this.телефон.HeaderText = "Телефон";
-            this.телефон.Name = "телефон";
-            this.телефон.ReadOnly = true;
-            // 
-            // студентBindingSource
-            // 
-            this.студентBindingSource.DataSource = typeof(Курсач.Студент);
-            // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(533, 261);
+            this.button9.Location = new System.Drawing.Point(464, 123);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(74, 52);
+            this.button9.Size = new System.Drawing.Size(100, 40);
             this.button9.TabIndex = 12;
             this.button9.Text = "Статистика";
             this.button9.UseVisualStyleBackColor = true;
@@ -388,8 +389,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(622, 455);
-            this.Controls.Add(this.button9);
+            this.ClientSize = new System.Drawing.Size(622, 491);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button3);
@@ -402,9 +402,9 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form2_FormClosed);
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.студентBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.студентBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

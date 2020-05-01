@@ -31,9 +31,10 @@ namespace Курсач
         }
 
         private void Form2_Load(object sender, EventArgs e)
-        {
+        { 
             rowAdd = dataGridView1.RowCount;
             студентBindingSource.DataSource = lst;
+            //выставляем фильтрацию рейтинга такую же, как и при предыдущем открытии приложении
             radioButton3.Checked = Properties.Settings.Default.rb1;
             radioButton2.Checked = Properties.Settings.Default.rb2;
             radioButton1.Checked = Properties.Settings.Default.rb3;
@@ -42,12 +43,13 @@ namespace Курсач
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            //закрытие
             Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //открытие формы с изменением студента
             if (dataGridView1.CurrentRow == null)
                 return;
             n = dataGridView1.CurrentRow.Index;
@@ -59,6 +61,7 @@ namespace Курсач
 
         private void button3_Click(object sender, EventArgs e)
         {
+            //открытие формы с добавлением студента
             AddStudentForm formS = new AddStudentForm();
 
             formS.Form2 = this;
@@ -66,15 +69,16 @@ namespace Курсач
         }
 
         private void button4_Click(object sender, EventArgs e)
-        {
+        {//удаление
             if (dataGridView1.CurrentCell == null)
                 return;
             if (dataGridView1.SelectedRows.Count > 1)
-            {
+            {//если выбрано несколько групп
                 if (MessageBox.Show(
                     "Вы действительно хотите удалить несколько студентов?", "Внимание",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
+                {//добавляем в listDel выбранные строки и удаляем эти строки из lstG
+
                     List<Студент> listDel = new List<Студент>();
                     foreach (DataGridViewRow item in dataGridView1.SelectedRows)
                         listDel.Add(lst[item.Index]);
@@ -87,6 +91,7 @@ namespace Курсач
                 else
                     return;
             }
+            //удаление одной строки
             string stname = (string)dataGridView1.CurrentRow.Cells["имя"].Value;
             if (MessageBox.Show(
                     "Вы действительно хотите удалить студента " + stname + " ?", "Внимание",
@@ -98,12 +103,12 @@ namespace Курсач
         }
 
         private void button6_Click(object sender, EventArgs e)
-        {
+        {//фильтрация
             Filter();
            
         }
         public void Filter()
-        {
+        {//проверка на перевод из строки в число    
             if (textBox4.Text != "")
                 if (!int.TryParse(textBox4.Text, out rating))
                 {
@@ -111,18 +116,21 @@ namespace Курсач
                     textBox4.Focus();
                     return;
                 }
-
+            //фильтрация
             dataGridView1.CurrentCell = null;
             for (int i = 0; i < dataGridView1.Rows.Count - rowAdd; i++)
             {
                 if (TestRow(i))
+                    //если строка проходит по критериям, показываем её
                     dataGridView1.Rows[i].Visible = true;
                 else
+                    //иначе скрываем её
                     dataGridView1.Rows[i].Visible = false;
             }
         }
         private bool TestRow(int i)
-        {
+        {            
+            //критерии
             if (textBox1.Text != "" && lst[i].Имя.ToUpper().StartsWith(textBox1.Text.ToUpper()) == false) return false;
 
             if (textBox2.Text != "" && lst[i].Год.ToString().ToUpper().StartsWith(textBox2.Text.ToUpper()) == false) return false;
@@ -139,7 +147,7 @@ namespace Курсач
         }
 
         private void button7_Click(object sender, EventArgs e)
-        {
+        {//очищаем текстбоксы
             textBox1.Text = "";
             textBox2.Text = "";
             textBox3.Text = "";
@@ -148,12 +156,14 @@ namespace Курсач
 
         private void button8_Click(object sender, EventArgs e)
         {
+            //показываем все строки в таблице
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
                 dataGridView1.Rows[i].Visible = true;
         }
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
+            //запоминаем фильтрацию рейтинга
             Properties.Settings.Default.tb4 = textBox4.Text;
             Properties.Settings.Default.rb1 = radioButton3.Checked;
             Properties.Settings.Default.rb2 = radioButton2.Checked;
@@ -161,7 +171,7 @@ namespace Курсач
         }
 
         private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
+        {//сортировка
             if (dataGridView1.Rows.Count > rowAdd)
             {
                 //если нажали на столбец не в первый раз подряд, нужно стереть добавление стрелочки в прошлый раз
@@ -177,7 +187,7 @@ namespace Курсач
                     //если нажали в первый раз, стирать ничего не надо
                     else
                         first_sort = false;
-
+                    //запоминаем колонку
                     current_column = e.ColumnIndex;
                 }
 
@@ -185,14 +195,14 @@ namespace Курсач
                 sort_order = -1 * sort_order;
                 //sort_order = -1 - по убыванию
                 //sort_order = 1 - по возрастанию
-
+                //добавляем стрелку
                 if (sort_order == 1)
                     dataGridView1.Columns[e.ColumnIndex].HeaderText = dataGridView1.Columns[e.ColumnIndex].HeaderText + "↓";
                 if (sort_order == -1)
                     dataGridView1.Columns[e.ColumnIndex].HeaderText = dataGridView1.Columns[e.ColumnIndex].HeaderText + "↑";
-
+                //сортировка
                 switch (dataGridView1.Columns[e.ColumnIndex].Name)
-                {
+                {//сортируем таблицу в зависимости от того, какое имя у выбранного столбца
                     case "имя":
                         lst.Sort(delegate (Студент a1, Студент a2)
                         {
@@ -230,7 +240,7 @@ namespace Курсач
         }
 
         private void button9_Click(object sender, EventArgs e)
-        {
+        {//запускаем форму со статистикой
             Stats formS = new Stats();
             List<double> y = new List<double>();
             for (int i = 0; i < dataGridView1.Rows.Count - rowAdd; i++)
@@ -239,6 +249,7 @@ namespace Курсач
                     y.Add(Convert.ToDouble(dataGridView1["рейтинг", i].Value));
                     
             }
+            //передаем форме список отфильтрованных значений
             formS.Y = y;
             formS.ShowDialog();
         }

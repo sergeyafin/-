@@ -156,7 +156,6 @@
             this.label6.Size = new System.Drawing.Size(343, 26);
             this.label6.TabIndex = 30;
             this.label6.Text = "Редактировать данные о студенте";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // EditStudentForm
             // 

@@ -164,7 +164,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(124, 20);
             this.textBox1.TabIndex = 14;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label5
             // 
@@ -242,7 +241,6 @@
             this.label6.Size = new System.Drawing.Size(202, 26);
             this.label6.TabIndex = 22;
             this.label6.Text = "Изменение группы";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // студентBindingSource
             // 

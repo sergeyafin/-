@@ -29,14 +29,10 @@ namespace Курсач
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            int год; 
+            int год;
+            //проверки на корректность
             if (string.IsNullOrEmpty(textBox5.Text))
             {
                 MessageBox.Show("Не введено название группы");
@@ -71,6 +67,7 @@ namespace Курсач
                 textBox4.Focus();
                 return;
             }
+            //добавление новой группы
             Form1.lstG.Add(new Учебная_группа(textBox5.Text, год, comboBox1.Text, textBox2.Text, textBox4.Text,lst));
             add = true;
             MessageBox.Show("Группа добавлена");
@@ -78,13 +75,9 @@ namespace Курсач
             form1.Filter();
         }
 
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
 
         private void button2_Click(object sender, EventArgs e)
-        {
+        {//очистка полей
             if (MessageBox.Show(
                    "Вы действительно хотите очистить все поля?", "Внимание",
                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -100,8 +93,8 @@ namespace Курсач
         }
 
         private void button3_Click(object sender, EventArgs e)
-        {
-             if (add)
+        {//закрытие
+            if (add)
             {
                 form1.учебнаягруппаBindingSource.ResetBindings(false);
             }
@@ -109,25 +102,15 @@ namespace Курсач
         }
 
         private void button4_Click(object sender, EventArgs e)
-        {
+        {//открытие формы добавления студента
             AddStudentForm formS = new AddStudentForm();
             
             formS.AddGroupForm = this;
             formS.ShowDialog();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button5_Click(object sender, EventArgs e)
-        {
+        {//открытие формы изменения студента
             if (dataGridView1.CurrentRow == null)
                 return;
             n = dataGridView1.CurrentRow.Index;
@@ -138,15 +121,15 @@ namespace Курсач
         }
 
         private void button6_Click(object sender, EventArgs e)
-        {
+        {//удаление
             if (dataGridView1.CurrentCell == null)
                 return;
             if (dataGridView1.SelectedRows.Count > 1)
-            {
+            {//если выбрано несколько групп
                 if (MessageBox.Show(
                     "Вы действительно хотите удалить несколько студентов?", "Внимание",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
+                {//добавляем в listDel выбранные строки и удаляем эти строки из lstG
                     List<Студент> listDel = new List<Студент>();
                     foreach (DataGridViewRow item in dataGridView1.SelectedRows)
                         listDel.Add(lst[item.Index]);
@@ -158,6 +141,7 @@ namespace Курсач
                 else
                     return;
             }
+            //удаление одной строки
             string stname = (string)dataGridView1.CurrentRow.Cells["имяDataGridViewTextBoxColumn"].Value;
             if (MessageBox.Show(
                     "Вы действительно хотите удалить студента " + stname + " ?", "Внимание",
